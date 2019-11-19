@@ -3,8 +3,13 @@
   <%= render 'layouts/head' %>
   <body>
     <%= render 'layouts/header' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+    <div class="contianer">
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: "alert alert-#{type}" %>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
