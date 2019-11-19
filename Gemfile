@@ -12,7 +12,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faker', '~> 2.7.0'
 gem 'devise', '~> 4.7.1'
-gem 'guard', '~> 2.16.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -20,6 +19,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.9.0'
   gem 'factory_bot_rails', '~> 5.1.1'
   gem 'capybara', '~> 3.29.0'
+  gem 'guard', '~> 2.16.1'
+  gem 'guard-rspec'
 end
 
 group :development do
