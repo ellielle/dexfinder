@@ -5,13 +5,13 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <%= link_to "https://github.com/ellielle/dissonance" do %>
-            <%= image_tag "github.png", class: "github-icon", alt: "github project link" %>
+            <%= octicon "mark-github", class: "github-icon" %>
           <% end %>
         </li>
       </ul>
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
-
+          <%# TODO signed in stuff here %>
         <% else %>
           <li class="nav-item">
             <%= link_to "Sign in", sign_in_path, class: "nav-link" %>
