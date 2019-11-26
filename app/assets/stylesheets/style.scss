@@ -1,3 +1,25 @@
+/* Variables */
+
+$navbar-links: white;
+$navbar-background-color-dark: #36393e;
+
+/* Header */
+
+.navbar .navbar-nav .nav-item .nav-link {
+  color: $navbar-links;
+}
+
+.navbar .github-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.navbar-dark {
+  background-color: $navbar-background-color-dark;
+}
+
+/* Misc */
+
 .debug_dump {
   clear: both;
   float: left;
