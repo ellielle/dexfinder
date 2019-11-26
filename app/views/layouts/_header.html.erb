@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <%= link_to "Dissonance", root_path, class: "navbar-brand" %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to "https://github.com/ellielle/dissonance" do %>
+            <%= image_tag "github.png", class: "github-icon", alt: "github project link" %>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        <% if user_signed_in? %>
+
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign in", sign_in_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
