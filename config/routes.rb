@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#index'
-
+  #resources :users, only: [:show]
+  get 'profile', to: "users#show"
   # Devise routes
-  devise_for :users, controllers: {
+  devise_for :users, path: "account", controllers: {
       registrations: 'users/registrations'
   }
   devise_scope :user do
