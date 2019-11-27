@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-dark">
+  <nav class="navbar navbar-dark fixed-top">
     <div class="container">
       <%= link_to "Dissonance", root_path, class: "navbar-brand" %>
       <ul class="navbar-nav mr-auto">
@@ -11,7 +11,14 @@
       </ul>
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <%# TODO signed in stuff here %>
+          <%# TODO signed in stuff here, change LINK_TO to point somewhere %>
+          <%= link_to 'https://google.com' do %>
+            <% if user_has_request? %>
+              <%= octicon "mail", class: "mail-icon", style: "fill: orangered;" %>
+            <% else %>
+              <%= octicon "mail-read", class: "mail-icon" %>
+            <% end %>
+          <% end %>
         <% else %>
           <li class="nav-item">
             <%= link_to "Sign in", sign_in_path, class: "nav-link" %>

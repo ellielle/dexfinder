@@ -5,13 +5,18 @@ $navbar-background-color-dark: #36393e;
 
 /* Header */
 
+// Move page content below navbar
+header {
+  margin-bottom: 4em;
+}
+
 .navbar .navbar-nav .nav-item .nav-link {
   color: $navbar-links;
 }
 
-.navbar .github-icon {
-  width: 25px;
-  height: 25px;
+.github-icon, .mail-icon {
+  width: 20px;
+  height: 20px;
   fill: $navbar-links;
 }
 

@@ -1,2 +1,5 @@
 <h1>Pages#index</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
+<%= debug(current_user) %>
+<%= debug(user_has_request?) unless current_user.nil? %>
+
