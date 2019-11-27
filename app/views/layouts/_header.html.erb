@@ -11,8 +11,8 @@
       </ul>
       <ul class="navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <%# TODO signed in stuff here, change LINK_TO to point somewhere %>
-          <%= link_to 'https://google.com' do %>
+          <%# TODO signed in stuff here, change link to profile to possible popup to confirm or reject request %>
+          <%= link_to profile_path do %>
             <% if user_has_request? %>
               <%= octicon "mail", class: "mail-icon", style: "fill: orangered;" %>
             <% else %>
