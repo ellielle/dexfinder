@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
     <div class="container">
       <%= link_to "DexFinder", root_path, class: "navbar-brand" %>
       <ul class="navbar-nav mr-auto">
@@ -9,18 +9,31 @@
           <% end %>
         </li>
       </ul>
-      <ul class="navbar-nav navbar-right">
+      <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <%# TODO signed in stuff here, change link to profile to possible popup to confirm or reject request %>
-          <%= link_to profile_path do %>
-            <% if user_has_request? %>
-              <%= octicon "mail", class: "mail-icon", style: "fill: orangered;" %>
-            <% else %>
-              <%= octicon "mail-read", class: "mail-icon" %>
-            <% end %>
-          <% end %>
-        <% else %>
+          <%# TODO signed-in stuff here, change link to profile to possible popup to confirm or reject request %>
           <li class="nav-item">
+            <%= link_to profile_path do %>
+              <% if user_has_request? %>
+                <%= octicon "mail", class: "mail-icon", style: "fill: orangered;" %>
+              <% else %>
+                <%= octicon "mail-read", class: "mail-icon" %>
+              <% end %>
+            <% end %>
+          </li>
+          <li class="nav-item dropdown nav-right-item">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Nav<b class="caret"></b>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to "Profile", profile_url, class: "dropdown-item" %>
+              <%= link_to "Friends", "#", class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Sign out", sign_out_path, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item nav-right-item">
             <%= link_to "Sign in", sign_in_path, class: "nav-link" %>
           </li>
         <% end %>
