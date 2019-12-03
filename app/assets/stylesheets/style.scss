@@ -14,14 +14,57 @@ header {
   color: $navbar-links;
 }
 
-.github-icon, .mail-icon {
+.github-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.mail-icon {
   width: 20px;
   height: 20px;
+}
+
+.github-icon, .mail-icon {
   fill: $navbar-links;
 }
 
 .navbar-dark {
   background-color: $navbar-background-color-dark;
+}
+
+.nav-right-item {
+  padding-left: 10px;
+}
+
+/* Format Devise's flash messages to appear like Bootstrap's */
+/*
+.alert-success {
+
+}
+
+.alert-alert {
+
+}
+*/
+
+.alert-notice {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-notice, .alert-error, .alert-success, .alert-alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
 
 /* Misc */
