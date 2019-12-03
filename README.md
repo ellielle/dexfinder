@@ -6,8 +6,13 @@ Facebook, I've opted to create a site with similar functionality focused around 
 [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon).
 
 ## Features
-- [x] None
-
+- [x] Friending people
+- [ ] User authentication
+- [ ] Looking up Pokemon
+- [ ] Creating and maintaining a Pokedex
+- [ ] Creating posts, with pictures / links, similar to Facebook's timeline
+- [ ] Commenting on posts
+- [ ] Searchable user profiles
 ## Installation
 
 ### Requirements
