@@ -1,6 +1,6 @@
 module ApplicationHelper
   def title_helper(page_title = "")
-    base_title = "Dissonance"
+    base_title = "DexFinder"
     if page_title.empty?
       base_title
     else
