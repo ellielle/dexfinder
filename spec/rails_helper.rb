@@ -16,12 +16,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-
-  # Allow factorybot methods and url helpers in tests
-  config.include FactoryBot::Syntax::Methods
-  config.include Rails.application.routes.url_helpers
-
-
   config.use_transactional_fixtures = true
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
@@ -31,4 +25,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::IntegrationHelpers
+  # Allow factorybot methods and url helpers in tests
+  config.include FactoryBot::Syntax::Methods
+  config.include Rails.application.routes.url_helpers
 end
