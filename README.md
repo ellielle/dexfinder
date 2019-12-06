@@ -7,12 +7,13 @@ Facebook, I've opted to create a site with similar functionality focused around 
 
 ## Features
 - [x] Friending people
-- [ ] User authentication
+- [x] User authentication
 - [ ] Looking up Pokemon
 - [ ] Creating and maintaining a Pokedex
 - [ ] Creating posts, with pictures / links, similar to Facebook's timeline
 - [ ] Commenting on posts
 - [ ] Searchable user profiles
+- [ ] Interactive chat
 ## Installation
 
 ### Requirements
