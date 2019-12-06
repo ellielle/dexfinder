@@ -4,7 +4,9 @@ module PagesHelper
   end
 
   def user_signed_in_check
-    flash[:danger] = "You must be signed in to visit this page."
-    redirect_to root_url unless user_signed_in?
+    unless user_signed_in?
+      flash[:danger] = "You must be signed in to visit this page."
+      redirect_to root_url
+    end
   end
 end
