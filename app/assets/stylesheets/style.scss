@@ -1,6 +1,8 @@
 /* Variables */
 
 $navbar-links: white;
+$navbar-links-hover: #AAA;
+$navbar-links-hover-dark: #777;
 $navbar-background-color-dark: #36393e;
 
 /* Header */
@@ -10,21 +12,64 @@ header {
   margin-bottom: 4em;
 }
 
-.navbar .navbar-nav .nav-item .nav-link {
-  color: $navbar-links;
+/* Footer */
+
+.footer {
+  // TODO change position if needed
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid $navbar-background-color-dark;
+  a {
+    color: $navbar-background-color-dark;
+    &:hover {
+      color: $navbar-links-hover-dark;
+      text-decoration: none;
+    }
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
 }
 
 .github-icon {
   width: 16px;
   height: 16px;
+  &:hover {
+    fill: $navbar-links-hover-dark;
+  }
+}
+
+/* Navbar */
+
+.dropdown-toggle, .navbar .navbar-nav a.nav-link {
+  color: $navbar-links;
+  &:hover {
+    color: $navbar-links;
+    text-decoration: none;
+  }
+}
+
+.navbar .dropdown-menu {
+  background-color: $navbar-links;
+}
+
+.navbar .dropdown-item {
+  color: $navbar-background-color-dark;
+  &:hover {
+    background-color: $navbar-background-color-dark;
+    color: $navbar-links
+  }
 }
 
 .mail-icon {
   width: 20px;
   height: 20px;
-}
-
-.github-icon, .mail-icon {
   fill: $navbar-links;
 }
 
@@ -36,16 +81,13 @@ header {
   padding-left: 10px;
 }
 
+.navbar-brand {
+  width: 7em;
+  height: auto;
+  margin: -7px;
+}
+
 /* Format Devise's flash messages to appear like Bootstrap's */
-/*
-.alert-success {
-
-}
-
-.alert-alert {
-
-}
-*/
 
 .alert-notice {
   color: #155724;

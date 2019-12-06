@@ -1,14 +1,9 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
     <div class="container">
-      <%= link_to "DexFinder", root_path, class: "navbar-brand" %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "https://github.com/ellielle/dexfinder" do %>
-            <%= octicon "mark-github", class: "github-icon" %>
-          <% end %>
-        </li>
-      </ul>
+      <%= link_to root_path do %>
+        <%= image_tag("DeXFindeR_shadow.png", class: "navbar-brand") %>
+      <% end %>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <%# TODO signed-in stuff here, change link to profile to possible popup to confirm or reject request %>
@@ -23,7 +18,7 @@
           </li>
           <li class="nav-item dropdown nav-right-item">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Nav<b class="caret"></b>
+              <%= current_user.username %><span class="caret"></span>
             </a>
             <div class="dropdown-menu">
               <%= link_to "Profile", profile_url, class: "dropdown-item" %>
