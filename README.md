@@ -5,6 +5,13 @@ Project's Rails [curriculum](https://www.theodinproject.com/courses/ruby-on-rail
 Facebook, I've opted to create a site with similar functionality focused around trading, battling and chatting with
 [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon).
 
+<details><summary>Live Version</summary>
+<p>
+Though still in a very early state, you can see a semi-functional live build 
+<a href="https://git.heroku.com/stark-anchorage-88765.git">here</a>.
+</p>
+</details>
+
 ## Features
 - [x] Friending people
 - [x] User authentication
