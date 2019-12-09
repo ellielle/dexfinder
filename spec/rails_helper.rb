@@ -28,4 +28,5 @@ RSpec.configure do |config|
   # Allow factorybot methods and url helpers in tests
   config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers
+  config.include Warden::Test::Helpers
 end
