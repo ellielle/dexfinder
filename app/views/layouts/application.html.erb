@@ -2,15 +2,15 @@
 <html lang="en">
   <%= render 'layouts/head' %>
   <body>
-    <%= render 'layouts/header' %>
     <div class="container">
+      <%= render 'layouts/header' %>
       <% flash.each do |type, message| %>
         <%= content_tag :div, message, class: "alert alert-#{type}" %>
       <% end %>
       <%= yield %>
       <%# TODO remove debug %>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
-    <%= render 'layouts/footer' %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
