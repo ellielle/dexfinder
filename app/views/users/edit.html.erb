@@ -1,0 +1,7 @@
+<% unless @requests.nil? %>
+  <%= render 'users/pending_requests', requests: @requests %>
+<% end %>
+<div class="all-users-list">
+  <%= %>
+</div>
+<%= debug(@requests) unless @requests.nil? %>

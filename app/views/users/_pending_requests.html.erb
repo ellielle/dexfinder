@@ -1,0 +1,14 @@
+<div class="pending-incoming-requests">
+  <a data-toggle="collapse" href="#pending-inc-requests"># Incoming Friend Requests - Click #</a>
+  <div class="collapse" id="pending-inc-requests">
+    <ul class="friend-requests">
+      <% requests.each do |req| %>
+        <li>
+
+          <%= link_to "#{req.from_user.username}", "users/#{req.from_user.username}"  %>
+
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

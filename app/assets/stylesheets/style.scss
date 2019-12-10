@@ -4,6 +4,8 @@ $navbar-links: white;
 $navbar-links-hover: #AAA;
 $navbar-links-hover-dark: #777;
 $navbar-background-color-dark: #36393e;
+$text-darker-grey: #586069;
+$text-light-grey: #959da5;
 
 /* Header */
 
@@ -20,13 +22,13 @@ header {
 
 .footer {
   // TODO change position if needed
-  position: absolute;
+  position: static;
   bottom: 0;
-  border-top: 1px solid $navbar-background-color-dark;
+  border-top: 1px solid #eaecef;
   a {
-    color: $navbar-background-color-dark;
+    color: $text-light-grey;
     &:hover {
-      color: $navbar-links-hover-dark;
+      color: $text-darker-grey;
       text-decoration: none;
     }
   }
@@ -43,8 +45,9 @@ header {
 .github-icon {
   width: 16px;
   height: 16px;
+  fill: $text-light-grey;
   &:hover {
-    fill: $navbar-links-hover-dark;
+    fill: $text-darker-grey;
   }
 }
 
@@ -89,6 +92,18 @@ header {
   width: 7em;
   height: auto;
   margin: -7px;
+}
+
+/* Body */
+
+.friend-requests {
+  li {
+    list-style: none;
+  }
+}
+
+.friend-button {
+
 }
 
 /* Format Devise's flash messages to appear like Bootstrap's */
