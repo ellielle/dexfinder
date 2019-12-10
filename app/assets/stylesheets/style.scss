@@ -14,11 +14,14 @@ header {
 
 /* Footer */
 
+.container .footer {
+  margin-left: -15px;
+}
+
 .footer {
   // TODO change position if needed
   position: absolute;
   bottom: 0;
-  width: 100%;
   border-top: 1px solid $navbar-background-color-dark;
   a {
     color: $navbar-background-color-dark;
@@ -75,6 +78,7 @@ header {
 
 .navbar-dark {
   background-color: $navbar-background-color-dark;
+  border-radius: 0 0 12px 12px;
 }
 
 .nav-right-item {
@@ -102,6 +106,7 @@ header {
 }
 
 .alert-notice, .alert-error, .alert-success, .alert-alert {
+  // TODO relative or absolute?
   position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
