@@ -94,7 +94,7 @@ header {
   margin: -7px;
 }
 
-/* Body */
+/* Friend List */
 
 .friend-requests, .friends-list {
   padding-left: 0;
@@ -105,6 +105,21 @@ header {
 
 .friend-requests-list, .friend {
   padding: 10px 0 10px 0;
+}
+
+.accept {
+  background-color: #00a200;
+  border-color: #188801;
+}
+
+.decline {
+  background-color: #ea0300;
+  border-color: #c40400;
+}
+
+.accept, .decline {
+  color: #fff;
+  border-radius: 5px;
 }
 
 /* Format Devise's flash messages to appear like Bootstrap's */
