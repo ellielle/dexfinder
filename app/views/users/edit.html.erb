@@ -1,9 +1,11 @@
-<div>
-<% unless @requests.nil? %>
-  <%= render 'users/pending_requests', requests: @requests %>
+<% unless @requests.nil? || @requests.empty? %>
+  <div>
+    <%= render 'pending_requests', requests: @requests %>
+  </div>
 <% end %>
-</div>
-<div class="all-users-list">
-  <%= %>
-</div>
-<%= debug(@requests) unless @requests.nil? %>
+<% unless @friends.nil? || @friends.empty? %>
+  <div>
+    <%= render 'friend_list', friends: @friends %>
+  </div>
+<% end %>
+<%= debug(@friends.empty?) %>
