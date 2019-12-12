@@ -22,7 +22,7 @@ header {
 
 .footer {
   // TODO change position if needed
-  position: static;
+  position: absolute;
   bottom: 0;
   border-top: 1px solid #eaecef;
   a {
@@ -96,19 +96,15 @@ header {
 
 /* Body */
 
-.friend-requests {
+.friend-requests, .friends-list {
   padding-left: 0;
   li {
     list-style: none;
   }
 }
 
-.friend-requests-list {
+.friend-requests-list, .friend {
   padding: 10px 0 10px 0;
-}
-
-.friend-button {
-
 }
 
 /* Format Devise's flash messages to appear like Bootstrap's */
@@ -126,7 +122,6 @@ header {
 }
 
 .alert-notice, .alert-error, .alert-success, .alert-alert {
-  // TODO relative or absolute?
   position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;

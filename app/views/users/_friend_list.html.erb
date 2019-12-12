@@ -1,0 +1,10 @@
+<div id="current-friends-list">
+  OMG YOU HAVE FRIENDS TEXT
+  <ul class="friends-list">
+    <% friends.each do |friend| %>
+      <li class="friend">
+        <%= link_to "#{friend.from_user.username}", "users/#{friend.from_user.username}" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

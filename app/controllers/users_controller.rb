@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def edit
     @requests = get_friend_requests if user_has_request?
+    @friends = get_friend_list
     friend_request_action if params[:request_id]
     respond_to do |format|
       format.html
@@ -30,6 +31,10 @@ class UsersController < ApplicationController
     elsif params[:request_id] && params[:commit] == "Decline"
       decline_request
     end
+  end
+
+  def get_friend_list
+    current_user.friend_requests.where(status: "accepted").all
   end
 
   def get_friend_requests
