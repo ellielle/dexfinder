@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'users/:username', to: "users#show"
   get 'profile', to: "users#edit"
-  post 'profile', to: "users#edit"
+  post 'profile', to: "users#update"
   # Devise routes
   devise_for :users, path: "account", controllers: {
       registrations: 'users/registrations'
