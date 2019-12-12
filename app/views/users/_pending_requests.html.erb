@@ -5,11 +5,13 @@
       <li class="friend-requests-list">
         <%= form_with url: profile_path, method: :get do |f| %>
           <%= link_to "#{req.from_user.username}", "users/#{req.from_user.username}"  %>
-          <%= f.submit "Accept", class: "btn-primary accept" %>
-          <%= f.submit "Decline", class: "btn-primary decline" %>
+          <%= f.submit "Accept", class: "accept" %>
+          <%= f.submit "Decline", class: "decline" %>
           <%= hidden_field_tag(:request_id, req.id) %>
         <% end %>
       </li>
     <% end %>
   </ul>
 </div>
+
+

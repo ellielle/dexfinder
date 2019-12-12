@@ -27,9 +27,9 @@ class UsersController < ApplicationController
 
   def friend_request_action
     if params[:request_id] && params[:commit] == "Accept"
-      accept_request
+      process_request(true)
     elsif params[:request_id] && params[:commit] == "Decline"
-      decline_request
+      process_request(false)
     end
   end
 
@@ -41,11 +41,8 @@ class UsersController < ApplicationController
     current_user.friend_requests.where(status: "none").all
   end
 
-  def accept_request
-    FriendRequest.update(params[:request_id], status: "accepted")
-  end
-
-  def decline_request
-    FriendRequest.update(params[:request_id], status: "declined")
+  def process_request(answer)
+    answer ? FriendRequest.update(params[:request_id], status: "accepted") :
+        FriendRequest.update(params[:request_id], status: "declined")
   end
 end
