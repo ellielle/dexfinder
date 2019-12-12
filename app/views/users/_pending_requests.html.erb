@@ -1,16 +1,15 @@
 <div id="pending-incoming-requests">
-  <a data-toggle="collapse" href="#pending-inc-requests"># Incoming Friend Requests - Click #</a>
-  <div class="collapse" id="pending-inc-requests">
-    <ul class="friend-requests">
-      <% friend_requests.each do |req| %>
-        <li class="friend-requests-list">
-          <%= form_with url: profile_path, method: :get, id: 'friend-form' do |f| %>
-            <%= link_to "#{req.from_user.username}", "users/#{req.from_user.username}"  %>
-            <%= f.submit "Accept", class: "btn-primary accept", data: { params: { friend_requests: @friend_requests }.to_param } %>
-            <%= f.submit "Decline", class: "btn-primary decline" %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  PLACEHOLDER FRIEND TEXT
+  <ul class="friend-requests">
+    <% requests.each do |req| %>
+      <li class="friend-requests-list">
+        <%= form_with url: profile_path, method: :get do |f| %>
+          <%= link_to "#{req.from_user.username}", "users/#{req.from_user.username}"  %>
+          <%= f.submit "Accept", class: "btn-primary accept" %>
+          <%= f.submit "Decline", class: "btn-primary decline" %>
+          <%= hidden_field_tag(:request_id, req.id) %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>

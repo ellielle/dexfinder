@@ -1,3 +1,1 @@
-<% msg = 'PLEASE KILL ME' %>
-console.log("<%= msg %>");
-console.log("<%= params[:friend_requests] %>")
+$("#pending-incoming-requests").html("<%= escape_javascript(render partial: 'pending_requests', locals: { requests: @requests }) %>");

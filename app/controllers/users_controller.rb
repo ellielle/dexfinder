@@ -10,23 +10,37 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @friend_requests = current_user.friend_requests if user_has_request?
+    @requests = get_friend_requests if user_has_request?
+    friend_request_action if params[:request_id]
     respond_to do |format|
       format.html
       format.js
     end
-    end
-=begin
-  def update
-    respond_to do |format|
-      if params[:commit] == "Accept"
-        format.html { redirect_to root_url }
-        format.js
-      elsif params[:commit] == "Decline"
-        format.js
-      end
+  end
 
+  def update
+
+  end
+
+  private
+
+  def friend_request_action
+    if params[:request_id] && params[:commit] == "Accept"
+      accept_request
+    elsif params[:request_id] && params[:commit] == "Decline"
+      decline_request
     end
   end
-=end
+
+  def get_friend_requests
+    current_user.friend_requests.where(status: "none").all
+  end
+
+  def accept_request
+    FriendRequest.update(params[:request_id], status: "accepted")
+  end
+
+  def decline_request
+    FriendRequest.update(params[:request_id], status: "declined")
+  end
 end

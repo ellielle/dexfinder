@@ -1,9 +1,9 @@
 <div>
-<% unless @friend_requests.nil? %>
-  <%= render 'users/pending_requests', friend_requests: @friend_requests %>
+<% unless @requests.nil? %>
+  <%= render 'users/pending_requests', requests: @requests %>
 <% end %>
 </div>
 <div class="all-users-list">
   <%= %>
 </div>
-<%= debug(@friend_requests) unless @friend_requests.nil? %>
+<%= debug(@requests) unless @requests.nil? %>
