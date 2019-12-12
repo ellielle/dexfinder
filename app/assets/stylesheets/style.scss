@@ -97,9 +97,14 @@ header {
 /* Body */
 
 .friend-requests {
+  padding-left: 0;
   li {
     list-style: none;
   }
+}
+
+.friend-requests-list {
+  padding: 10px 0 10px 0;
 }
 
 .friend-button {
