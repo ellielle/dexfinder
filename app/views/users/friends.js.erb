@@ -1,4 +1,2 @@
-document.querySelector('#pending-incoming-requests').innerHTML = ""
-document.querySelector('#pending-incoming-requests').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render partial: "pending_requests", locals: { requests: @requests }) %>');
-document.querySelector('#current-friends-list').innerHTML = ""
-document.querySelector('#current-friends-list').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render partial: "friend_list", locals: { friends: @friends }) %>');
+$("#pending-incoming-requests").html("<%= escape_javascript(render partial: 'pending_requests', locals: { requests: @requests }) %>");
+$("#current-friends-list").html("<%= escape_javascript(render partial: 'friend_list', locals: { friends: @friends }) %>");
