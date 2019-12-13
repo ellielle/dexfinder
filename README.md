@@ -8,7 +8,7 @@ Facebook, I've opted to create a site with similar functionality focused around 
 <details><summary>Live Version</summary>
 <p>
 Though still in a very early state, you can see a semi-functional live build 
-<a href="https://git.heroku.com/stark-anchorage-88765.git">here</a>.
+<a href="https://stark-anchorage-88765.herokuapp.com/">here</a>.
 </p>
 </details>
 
