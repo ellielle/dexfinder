@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
+    #TODO REMOVE ME
     remove_me if Rails.env.development?
   end
 
