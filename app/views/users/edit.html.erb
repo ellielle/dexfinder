@@ -1,10 +1,8 @@
-<% unless @requests.nil? || @requests.empty? %>
-  <div>
+
+  <div id="testingstuff">
     <%= render 'pending_requests', requests: @requests %>
   </div>
-<% end %>
-<% unless @friends.nil? || @friends.empty? %>
   <div>
     <%= render 'friend_list', friends: @friends %>
   </div>
-<% end %>
+

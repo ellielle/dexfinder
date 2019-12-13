@@ -12,15 +12,19 @@ class UsersController < ApplicationController
   def edit
     @requests = get_friend_requests if user_has_request?
     @friends = get_friend_list
-    friend_request_action if params[:request_id]
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def update
 
+  end
+
+  def friends
+    @requests = get_friend_requests if user_has_request?
+    @friends = get_friend_list
+    friend_request_action if params[:request_id]
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

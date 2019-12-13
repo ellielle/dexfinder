@@ -3,7 +3,7 @@
   <ul class="friend-requests">
     <% requests.each do |req| %>
       <li class="friend-requests-list">
-        <%= form_with url: profile_path, method: :get do |f| %>
+        <%= form_with url: friends_path, id: "friend-form" do |f| %>
           <%= link_to "#{req.from_user.username}", "users/#{req.from_user.username}"  %>
           <%= f.submit "Accept", class: "accept" %>
           <%= f.submit "Decline", class: "decline" %>

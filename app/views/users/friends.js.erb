@@ -1,0 +1,4 @@
+document.querySelector('#testingstuff').innerHTML = ""
+document.querySelector('#testingstuff').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render partial: "pending_requests", locals: { requests: @requests }) %>');
+document.querySelector('#current-friends-list').innerHTML = ""
+document.querySelector('#current-friends-list').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render partial: "friend_list", locals: { friends: @friends }) %>');
