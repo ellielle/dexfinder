@@ -1,8 +1,11 @@
-
-  <div id="pending-incoming-requests">
+<div id="pending-incoming-requests">
+  <% unless @requests.nil? || @requests.empty? %>
     <%= render 'pending_requests', requests: @requests %>
-  </div>
-  <div id="current-friends-list">
+  <% end %>
+</div>
+<div id="current-friends-list">
+  <% unless @friends.nil? || @friends.empty? %>
     <%= render 'friend_list', friends: @friends %>
-  </div>
+  <% end %>
+</div>
 
