@@ -21,13 +21,13 @@ RSpec.describe "RequestingFriends", type: :system do
   end
 
   describe "navigating to profile page and accepting invitation" do
-    it "should allow user into their profile page" do
+    it "should allow user to use profile page" do
       FactoryBot.create(:user, :user2)
       FactoryBot.create(:friend_request)
       visit profile_url
       expect(page.status_code).to eq(200)
       expect(page).to have_current_path(profile_path)
-      expect(page).to have_css(".pending-incoming-requests")
+      expect(page).to have_css("#pending-incoming-requests")
       #click accept button for each request
       #ensure none are left
       #reset test / requests?
@@ -41,7 +41,7 @@ RSpec.describe "RequestingFriends", type: :system do
       visit profile_url
       expect(page.status_code).to eq(200)
       expect(page).to have_current_path(root_path)
-      expect(page).to_not have_css(".pending-incoming-requests")
+      expect(page).to_not have_css("#pending-incoming-requests")
     end
   end
 end

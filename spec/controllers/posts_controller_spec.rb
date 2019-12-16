@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  before do
+    FactoryBot.create(:user)
+    FactoryBot.create(:post)
+  end
 
   describe "GET #new" do
     it "returns http success" do
@@ -11,14 +15,18 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, params: { slug: "totally-real-page" }
+      expect(response).to have_http_status(:redirect)
+      get :show, params: { slug: "test-page" }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, params: { slug: "totally-real-page" }
+      expect(response).to have_http_status(:redirect)
+      get :edit, params: { slug: "test-page" }
       expect(response).to have_http_status(:success)
     end
   end

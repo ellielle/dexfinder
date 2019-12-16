@@ -1,2 +1,8 @@
-<h1>Posts#edit</h1>
 <p>Find me in app/views/posts/edit.html.erb</p>
+<% if @post.nil? %>
+  <h1><%= "IT'S NIL, FUCK" %></h1>
+  <% else %>
+<% debug(@post) %>
+  <%= @post.body %>
+  <%= @post.user.username %>
+<% end %>
