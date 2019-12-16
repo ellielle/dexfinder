@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#index'
+  resources :posts, param: :slug
   get 'users/:username', to: "users#show"
   get 'profile', to: "users#edit"
   post 'friends', to: "users#friends"
