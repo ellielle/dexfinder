@@ -8,6 +8,8 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'webdrivers'
+require 'support/database_cleaner'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -16,7 +18,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
@@ -29,4 +31,14 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers
   config.include Warden::Test::Helpers
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.configure do |conf|
+    conf.default_driver = :rack_test
+    conf.default_max_wait_time = 10
+    conf.javascript_driver = :chrome
+  end
 end

@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  after_validation :set_slug
+  after_create :set_slug
   validates :body, presence: true, length: { maximum: 1500 }
 
   default_scope -> { order(created_at: :desc) }
