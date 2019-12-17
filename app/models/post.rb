@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  after_create :set_slug
+  after_validation :set_slug
   validates :body, presence: true, length: { maximum: 1500 }
 
   default_scope -> { order(created_at: :desc) }
@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   def to_param
     slug
   end
+
+  private
 
   def set_slug
     self.update(slug: self.body.parameterize.truncate(80))
