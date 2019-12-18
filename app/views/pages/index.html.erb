@@ -1,6 +1,6 @@
+<%= button_to("Reset", boop_path) %>
 <% if current_user.nil? %>
   <%# TODO FILL ME IN %>
 <% else %>
-  <h1>Index</h1>
-  <p>NOT WORKING YET OBVIOUSLY</p>
+  <%= render "posts/post_feed", posts: @posts %>
 <% end %>
