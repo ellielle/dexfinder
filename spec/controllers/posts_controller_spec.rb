@@ -17,7 +17,7 @@ RSpec.describe PostsController, type: :controller do
     it "returns http success" do
       get :show, params: { slug: "totally-real-page" }
       expect(response).to have_http_status(:redirect)
-      get :show, params: { slug: "test-page" }
+      get :show, params: { slug: "test-page-testing" }
       expect(response).to have_http_status(:success)
     end
   end
@@ -26,7 +26,7 @@ RSpec.describe PostsController, type: :controller do
     it "returns http success" do
       get :edit, params: { slug: "totally-real-page" }
       expect(response).to have_http_status(:redirect)
-      get :edit, params: { slug: "test-page" }
+      get :edit, params: { slug: "test-page-testing" }
       expect(response).to have_http_status(:success)
     end
   end
