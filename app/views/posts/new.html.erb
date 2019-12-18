@@ -1,5 +1,8 @@
 <%= provide(:title, "New Post") %>
 <h1>Posts#new</h1>
 <%= form_with model: @post, local: true do |f| %>
-  <%= f.te %>
+  <%= render 'users/shared/error_messages', resource: @post %>
+  <%= f.text_area :body, autofocus: true, required: true, class: "form-control" %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

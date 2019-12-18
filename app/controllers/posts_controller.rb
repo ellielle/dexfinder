@@ -5,9 +5,17 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Post.new(post_params)
+    if @post.save
+      flash[:success] = "Post created!"
+      redirect_to post_path(@post)
+    else
+      render :new
+    end
   end
 
   def index
+    @posts = Post.all
   end
 
   def show
@@ -27,6 +35,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def post_params
+    params.require(:post).permit(:body, :user_id)
+  end
 
   def post_slug
     Post.find_by(slug: params[:slug])
