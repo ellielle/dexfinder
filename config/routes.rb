@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'pages#index'
+  # TODO delete
+  post 'boop', to: "pages#remove_me"
+  # TODO delete
   resources :posts, param: :slug
-  get 'users/:username', to: "users#show"
+  get 'users/:username', to: "users#show", as: :user_profile
   get 'profile', to: "users#edit"
   post 'friends', to: "users#friends"
   # Devise routes
