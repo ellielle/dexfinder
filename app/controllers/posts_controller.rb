@@ -18,6 +18,13 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def get_post
+    @post = Post.find(params[:current_post])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @post = post_slug
     slug_redirect

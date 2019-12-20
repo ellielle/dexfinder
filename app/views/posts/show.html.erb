@@ -1,2 +1,4 @@
 <h1>Posts#show</h1>
-<%= @post.body %>
+<%= link_to @post.user.username, user_profile_path(@post.user) %><br/>
+<%= "#{distance_of_time_in_words(@post.created_at, Time.now)} ago" %><br/>
+<%= @post.body %><br/><br/><br/>

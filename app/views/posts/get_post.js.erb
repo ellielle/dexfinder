@@ -1,0 +1,11 @@
+document.addEventListener("click", function(e) {
+    $.ajax({
+        type: 'GET',
+        success: function(data) {
+            if(data) {
+                $('.post-modal-pop')
+                    .html('<%= escape_javascript(render partial: "post_modal", locals: { post: @post }) %>')
+            }
+        }
+    })
+})

@@ -1,6 +1,14 @@
+<style>
+  p {
+    margin-bottom: 0;
+  }
+</style>
+
 <% posts.each do |post| %>
-  <%= link_to post.user.username, user_profile_path(post.user) %><br/>
-  <%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %><br/>
-  <%= post.created_at %><br/>
-  <%= post.body %><br/><br/><br/>
+  <p><%= link_to post.user.username, get_post_path(current_post: post.id), remote: true, "data-toggle": "modal",
+                 "data-target": "#post-modal", class: "post-author" %></p>
+  <p><%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %></p>
+  <p><%= post.body.truncate(50) %></p>
+  <p><%= "TODO - Render #show in a modal" %></p>
 <% end %>
+

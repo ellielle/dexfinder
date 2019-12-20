@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'boop', to: "pages#remove_me"
   # TODO delete
   resources :posts, param: :slug
+  get "#", to: "posts#get_post", as: :get_post
   get 'users/:username', to: "users#show", as: :user_profile
   get 'profile', to: "users#edit"
   post 'friends', to: "users#friends"
