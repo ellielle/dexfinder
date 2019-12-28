@@ -5,8 +5,7 @@
 </style>
 
 <% posts.each do |post| %>
-  <p><%= link_to post.user.username, get_post_path(current_post: post.id), remote: true, "data-toggle": "modal",
-                 "data-target": "#post-modal", "data-whatever": post.id %></p>
+  <p><%= link_to post.user.username, get_post_path(current_post: post.id), remote: true, class: "pmodal" %></p>
   <p><%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %></p>
   <p><%= post.body.truncate(50) %></p>
   <p><%= "TODO - Render #show in a modal" %></p>

@@ -1,3 +1,2 @@
-$('.post-modal-pop').html('<%= escape_javascript(render partial: "post_modal", locals: { post: @post }) %>')
-
-// Might need to apply the render on a different element so it doesn't lag behind
+$(".post-modal-pop").html('<%= escape_javascript(render partial: "post_modal", locals: { post: @post }) %>')
+$("#post-modal").modal('show')
