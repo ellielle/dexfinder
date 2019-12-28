@@ -7,6 +7,9 @@
       <% flash.each do |type, message| %>
         <%= content_tag :div, message, class: "alert alert-#{type}" %>
       <% end %>
+      <noscript>
+        <%= render "layouts/noscript" %>
+      </noscript>
       <%= yield %>
       <%# TODO remove debug %>
       <%= render 'layouts/footer' %>
