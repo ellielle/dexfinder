@@ -9,6 +9,14 @@ class Post < ApplicationRecord
     slug
   end
 
+  def like_post
+
+  end
+
+  def unlike_post
+
+  end
+
   private
 
   def set_slug
