@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   root 'pages#index'
+
   # TODO delete
   post 'boop', to: "pages#remove_me"
   # TODO delete
-  resources :posts, param: :slug
+
+  resources :posts, param: :slug do
+    resources :likes
+  end
   get "#", to: "posts#get_post", as: :get_post
   get 'users/:username', to: "users#show", as: :user_profile
   get 'profile', to: "users#edit"
