@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # TODO delete
 
   resources :posts, param: :slug do
-    resources :likes
+    resources :likes, only: [:create, :destroy]
   end
   get "#", to: "posts#get_post", as: :get_post
   get 'users/:username', to: "users#show", as: :user_profile
