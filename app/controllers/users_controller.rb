@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_signed_in_check
+  before_action :user_signed_in_redirect
 
   def index
 

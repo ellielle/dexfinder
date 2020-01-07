@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :user_signed_in?
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -39,6 +41,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:body, :user_id)
+  end
+
+  def correct_user?
+    post_slug.user == current_user
   end
 
   def post_slug
