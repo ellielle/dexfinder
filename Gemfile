@@ -20,7 +20,7 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.7.0'
   gem 'rspec-rails', '~> 4.0.0.beta3'
   gem 'factory_bot_rails', '~> 5.1.1'
-  gem 'capybara', '~> 3.29.0'
+  gem 'capybara', '~> 3.30.0'
   gem 'guard', '~> 2.16.1'
   gem 'guard-rspec'
 end
