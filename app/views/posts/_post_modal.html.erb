@@ -4,10 +4,12 @@
       <div class="modal-body">
         <p><%= post.body %></p>
         <p><%= "#{post.user.username} - #{distance_of_time_in_words(post.created_at, Time.now)} ago" %></p>
-        <p><%= button_tag "Like" %></p>
+        <p class="like-button"><%= button_to("Like", post_likes_path(post.slug), remote: true,
+                                             id: "btn-like") %></p>
+        <p><%= debug(params) %></p>
       </div>
     </div>
   </div>
 </div>
 
-<%# TODO This page %>
+<%# TODO This page, like button has id to swap from like to dislike using JS %>

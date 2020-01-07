@@ -1,14 +1,12 @@
+<div class="post-list">
+  <% posts.each do |post| %>
+    <div class="post-content">
+      <p><%= link_to post.user.username, post_path(post), class: "post-modal-open"%></p>
+      <p><%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %></p>
+      <p><%= post.body.truncate(50) %></p>
+      <p><%= post.likes.count %> Likes</p>
+    </div>
+  <% end %>
+</div>
 
 <%# TODO this page %>
-<style>
-  p {
-    margin-bottom: 0;
-  }
-</style>
-
-<% posts.each do |post| %>
-  <p><%= link_to post.user.username, get_post_path(current_post: post.id), remote: true, class: "pmodal" %></p>
-  <p><%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %></p>
-  <p><%= post.body.truncate(50) %></p>
-<% end %>
-

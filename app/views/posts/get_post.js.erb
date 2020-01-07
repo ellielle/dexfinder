@@ -1,2 +1,23 @@
-$(".post-modal-pop").html('<%= escape_javascript(render partial: "post_modal", locals: { post: @post }) %>')
-$("#post-modal").modal('show')
+$(".post-modal-open").click(function(e) {
+    $(".post-modal-pop").html('<%= escape_javascript(render partial: "post_modal", locals: { post: @post }) %>')
+    $("#post-modal").modal('show')
+})
+
+
+
+$("#btn-like").click(function(e) {
+    e.preventDefault()
+    $("#btn-like").attr("disabled", true)
+    $.ajax({
+        success: function(response){
+            if ( $("#btn-like").attr("value") == "Like") {
+                $("#btn-like").attr("disabled", false).attr("value", "Dislike")
+            } else {
+                $("#btn-like").attr("disabled", false).attr("value", "Like")
+            }
+        }
+    })
+})
+
+
+// TODO might need to use AJAX on first set of code to make it work properly

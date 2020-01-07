@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @like_button = "Like"
   end
 
   def show
@@ -32,13 +33,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def get_post
-    @post = Post.find(params[:current_post])
-    respond_to do |format|
-      format.js
-    end
   end
 
   private

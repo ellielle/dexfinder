@@ -94,6 +94,15 @@ header {
   margin: -7px;
 }
 
+/* Posts */
+
+.post-content {
+  margin-bottom: 20px;
+  p {
+    margin-bottom: 0;
+  }
+}
+
 /* Friend List */
 
 .friend-requests, .friends-list {
