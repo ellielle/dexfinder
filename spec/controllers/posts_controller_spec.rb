@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
+RSpec.describe PostsController do
+  include Devise::Test::ControllerHelpers
+
   before do
     FactoryBot.create(:user)
     FactoryBot.create(:post)
