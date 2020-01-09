@@ -33,9 +33,9 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 3.30.0'
+  gem 'capybara', '~> 3.29.0'
   gem 'database_cleaner'
-  gem 'webdrivers', '4.1.3'
+  gem 'selenium-webdriver'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

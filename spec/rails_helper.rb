@@ -11,16 +11,6 @@ require 'capybara/rspec'
 #require 'webdrivers'
 require 'support/database_cleaner'
 
-Capybara.register_driver :firefox do |app|
-  Capybara::Selenium::Driver.new(app, browser: :firefox)
-end
-
-Capybara.configure do |conf|
-  conf.default_driver = :rack_test
-  conf.default_max_wait_time = 5
-  conf.javascript_driver = :firefox
-end
-
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
