@@ -9,12 +9,12 @@ end
 
 RSpec.describe "Requesting Friends" do
   before do
-    driven_by(:chrome)
+    Capybara.current_driver = :rack_test
     user = FactoryBot.create(:user)
     login_as(user, scope: :user)
   end
 
-  xdescribe "navigating to profile page and accepting invitation" do
+  describe "navigating to profile page and accepting invitation" do
     it "should allow user to use profile page" do
       FactoryBot.create(:user, :user2)
       FactoryBot.create(:friend_request)

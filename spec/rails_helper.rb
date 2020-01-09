@@ -8,8 +8,12 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
-require 'webdrivers'
+#require 'webdrivers'
 require 'support/database_cleaner'
+
+Capybara.configure do |conf|
+  conf.default_max_wait_time = 10
+end
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -31,14 +35,4 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers
   config.include Warden::Test::Helpers
-
-  Capybara.register_driver :chrome do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome)
-  end
-
-  Capybara.configure do |conf|
-    conf.default_driver = :rack_test
-    conf.default_max_wait_time = 10
-    conf.javascript_driver = :chrome
-  end
 end
