@@ -1,6 +1,13 @@
-<h1>Posts#show</h1>
-<%= link_to @post.user.username, user_profile_path(@post.user) %>
-<%= "#{distance_of_time_in_words(@post.created_at, Time.now)} ago" %>
-<%= @post.body %>
+<p><%= @post.body %></p>
+<p class="like-button"><%= button_to("Like", post_likes_path(@post.slug), remote: true,
+                                     id: "btn-like") %></p>
+<small>
+  <p>Posted by <%= link_to @post.user.username, user_profile_path(@post.user) %>
+    <%= "#{distance_of_time_in_words(@post.created_at, Time.now)} ago" %></p>
+</small>
 
+<br/><br/><br/><br/><br/>
+<div class="post-comments">
+  <p>COMMENTS GO HERE</p>
+</div>
 <%# TODO this page %>

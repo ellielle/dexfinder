@@ -1,0 +1,13 @@
+$("#btn-like").click(function(e) {
+    e.preventDefault()
+    $("#btn-like").attr("disabled", true)
+    $.ajax({
+        success: function(response){
+            if ( $("#btn-like").attr("value") == "Like") {
+                $("#btn-like").attr("disabled", false).attr("value", "Dislike")
+            } else {
+                $("#btn-like").attr("disabled", false).attr("value", "Like")
+            }
+        }
+    })
+})
