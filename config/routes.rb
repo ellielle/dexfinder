@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   # TODO delete
   post 'boop', to: "pages#remove_me"
   # TODO delete
-  
+
   get 'users/:username', to: "users#show", as: :user_profile
   get 'profile', to: "users#edit"
   post 'friends', to: "users#friends"
   resources :posts, param: :slug do
     resources :likes, only: [:create, :show, :destroy]
+    resources :comments, only: [:new, :create, :destroy]
   end
-  resources :comments
+  resources :comments, only: [:new, :create, :destroy] do
+    resources :comments, only: [:new, :create, :destroy]
+  end
   # Devise routes
   devise_for :users, path: "account", controllers: {
       registrations: 'users/registrations'
