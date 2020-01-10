@@ -1,5 +1,7 @@
 if ( $("#btn-like").attr("value") == "Like") {
     $("#btn-like").attr("disabled", false).attr("value", "Dislike")
+    $("#like-count").html("<%= "#{pluralize(@post.likes.count, "like")}" %>")
 } else {
     $("#btn-like").attr("disabled", false).attr("value", "Like")
+    $("#like-count").html("<%= "#{pluralize(@post.likes.count, "like")}" %>")
 }
