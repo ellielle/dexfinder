@@ -30,6 +30,3 @@ class LikesController < ApplicationController
     @post = Post.find_by(slug: params[:post_slug])
   end
 end
-
-# TODO disable button after a like / dislike and don't re-enable it until after the query completes
-# might need to use a create.js.erb file to re-render modal?
