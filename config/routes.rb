@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :posts, param: :slug do
     resources :likes, only: [:create, :show, :destroy]
   end
-  get "#", to: "likes#show", as: :set_likes
   get 'users/:username', to: "users#show", as: :user_profile
   get 'profile', to: "users#edit"
   post 'friends', to: "users#friends"

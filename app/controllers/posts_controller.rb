@@ -18,11 +18,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @like_button = "Like"
   end
 
   def show
     @post = post_slug
+    @button = already_liked?(@post.id) ? "Dislike" : "Like"
     slug_redirect
   end
 

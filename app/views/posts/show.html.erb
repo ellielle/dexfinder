@@ -1,12 +1,16 @@
 <p><%= @post.body %></p>
-<p class="like-button"><%= button_to("Like", post_likes_path(@post.slug), remote: true,
-                                     id: "btn-like") %></p>
-<small>
-  <p>Posted by <%= link_to @post.user.username, user_profile_path(@post.user) %>
-    <%= "#{distance_of_time_in_words(@post.created_at, Time.now)} ago" %></p>
-</small>
+<% unless @post.user == current_user %>
+  <p class="like-button"><%= button_to(@button, post_likes_path(@post.slug), remote: true,
+                                       id: "btn-like") %></p>
+<% end %>
+<p>
+  <small class="posted-by">
+    Posted by <%= link_to @post.user.username, user_profile_path(@post.user) %>
+    <%= "#{distance_of_time_in_words(@post.created_at, Time.now)} ago" %><br/>
+    <%= "#{pluralize(@post.likes.count, "like")}" %>
+  </small>
+</p>
 
-<br/><br/><br/><br/><br/>
 <div class="post-comments">
   <p>COMMENTS GO HERE</p>
 </div>

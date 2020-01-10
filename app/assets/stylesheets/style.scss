@@ -99,7 +99,17 @@ header {
 .post-content {
   margin-bottom: 20px;
   p {
-    margin-bottom: 0;
+    margin-bottom: -5px;
+  }
+}
+
+.post-comments {
+  padding-top: 50px;
+}
+
+.posted-by {
+  p {
+    margin-bottom: -10px;
   }
 }
 

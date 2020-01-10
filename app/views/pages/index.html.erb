@@ -2,5 +2,5 @@
 <% if current_user.nil? %>
   <%# TODO FILL ME IN %>
 <% else %>
-  <%= render "posts/post_feed", posts: @posts %>
+  <%= button_to("Posts Index", posts_path, method: :get) %>
 <% end %>
