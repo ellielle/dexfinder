@@ -2,15 +2,13 @@ require 'rails_helper'
 
 RSpec.describe PostsController do
   include Devise::Test::ControllerHelpers
-
   before do
-    FactoryBot.create(:user)
+    sign_in(FactoryBot.create(:user))
     FactoryBot.create(:post)
   end
 
   describe "GET #new" do
     it "returns http success" do
-      get :new
       expect(response).to have_http_status(:success)
     end
   end

@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @post = post_slug
-    @is_liked = already_liked?(@post.id) ? "liked" : "not-liked"
+    @is_liked = already_liked?(@post.id) ? "liked" : "not-liked" if @post
     slug_redirect
   end
 
