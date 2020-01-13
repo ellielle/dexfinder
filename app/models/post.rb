@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :delete_all
   has_many :comments, dependent: :delete_all
   after_create :set_slug
+  
   validates :body, presence: true, length: { minimum: 10, maximum: 1500 }
 
   default_scope -> { order(updated_at: :desc) }

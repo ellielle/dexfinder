@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :user_signed_in?
+  before_action :user_signed_in_redirect
   before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def new
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @post = post_slug
-    @button = already_liked?(@post.id) ? "Dislike" : "Like"
+    @is_liked = already_liked?(@post.id) ? "liked" : "not-liked"
     slug_redirect
   end
 

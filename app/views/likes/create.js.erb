@@ -1,7 +1,7 @@
-if ( $("#btn-like").attr("value") == "Like") {
-    $("#btn-like").attr("disabled", false).attr("value", "Dislike")
+if ( $(".like-icon").hasClass("liked")) {
+    $(".like-icon").css("fill", "black").removeClass("liked").addClass("not-liked")
     $("#like-count").html("<%= "#{pluralize(@post.likes.count, "like")}" %>")
 } else {
-    $("#btn-like").attr("disabled", false).attr("value", "Like")
+    $(".like-icon").css("fill", "orangered").removeClass("not-liked").addClass("liked")
     $("#like-count").html("<%= "#{pluralize(@post.likes.count, "like")}" %>")
 }
