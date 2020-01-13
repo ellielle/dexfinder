@@ -1,22 +1,16 @@
 <div class="row">
-  <div class="like-button col-1">
-    <%= button_to post_likes_path(@post.slug), remote: true, id: "btn-like" do %>
-      <%= octicon "thumbsup", class: "like-icon #{@is_liked}" %>
-    <% end %>
-    <small id="like-count"><%= "#{pluralize(@post.likes.count, "like")}" %></small>
-  </div>
-  <div class="post-body col-11"><%= @post.body %></div>
-
-  <% unless @post.user == current_user %>
-
-  <% end %>
-
-  <div class="posted-by">
+  <%= render "likes_count_user_check", post: @post, is_liked: @is_liked %>
+  <div class="post-title col-11">
+    <%= @post.title %>
     <%= render "post_date_author", post: @post %>
   </div>
 </div>
+<div class="post-body">
+  <%= @post.body %>
+</div>
 
 <div class="post-comments">
+  <%# TODO comment box, e %>
   <p>COMMENTS GO HERE</p>
 </div>
 <%# TODO this page %>

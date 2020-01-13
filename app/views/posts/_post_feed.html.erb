@@ -1,11 +1,15 @@
 <div class="post-list row">
   <% posts.each do |post| %>
     <small class="likes-count col-1">
-      <%= octicon "thumbsup", class: "like-icon" %>
+      <% if already_liked?(post.id) %>
+        <%= octicon "thumbsup", class: "like-icon liked" %>
+      <% else %>
+        <%= octicon "thumbsup", class: "like-icon not-liked" %>
+      <% end %>
       <span class="likes-count-number"><%= post.likes.count %></span>
     </small>
     <div class="post-content col-11">
-      <p><%= link_to post.body.truncate(50).titleize, post_path(post) %></p>
+      <p><%= link_to post.title, post_path(post) %></p>
       <div class="posted-by">
         <%= render "post_date_author", post: post %>
         <p><small>
