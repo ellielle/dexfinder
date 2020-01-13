@@ -1,0 +1,5 @@
+<p><small>
+  Posted
+  <%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago by " %>
+  <%= link_to post.user.username, user_profile_path(post.user) %>
+</small></p>

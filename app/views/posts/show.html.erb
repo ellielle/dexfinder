@@ -6,12 +6,7 @@
 <% end %>
 
 <div class="posted-by">
-  <p>
-    <small>
-      Posted by <%= link_to @post.user.username, user_profile_path(@post.user) %>
-      <%= "#{distance_of_time_in_words(@post.created_at, Time.now)} ago" %>
-    </small>
-  </p>
+  <%= render "post_date_author", post: @post %>
   <p><small id="like-count"><%= "#{pluralize(@post.likes.count, "like")}" %></small></p>
 </div>
 

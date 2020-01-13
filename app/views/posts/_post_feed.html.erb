@@ -7,10 +7,7 @@
     <div class="post-content col-11">
       <p><%= link_to post.body.truncate(50).titleize, post_path(post) %></p>
       <div class="posted-by">
-        <p><small>Posted by
-          <%= link_to post.user.username, user_profile_path(post.user) %>
-          <%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %>
-        </small></p>
+        <%= render "post_date_author", post: post %>
         <p><small>
           <%= "#{pluralize(post.comments.count, "comment")}" %>
         </small></p>
