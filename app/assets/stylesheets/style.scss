@@ -60,7 +60,8 @@ header {
 /* Posts */
 
 .post-content {
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+  padding-left: -50px;
   p {
     margin-bottom: -5px;
   }
@@ -71,10 +72,17 @@ header {
 }
 
 .posted-by {
+  display: inline-block;
   p {
     margin-bottom: -10px;
   }
 }
+
+.post-list .likes-count {
+  margin-top: 18px;
+  max-width: 60px;
+}
+
 
 /* Friend List */
 

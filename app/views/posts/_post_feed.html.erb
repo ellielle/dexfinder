@@ -1,12 +1,19 @@
-<div class="post-list">
+<div class="post-list row">
   <% posts.each do |post| %>
-    <div class="post-content">
+    <small class="likes-count col-1">
+      <%= octicon "thumbsup", class: "like-icon" %>
+      <span class="likes-count-number"><%= post.likes.count %></span>
+    </small>
+    <div class="post-content col-11">
       <p><%= link_to post.body.truncate(50).titleize, post_path(post) %></p>
       <div class="posted-by">
         <p><small>Posted by
           <%= link_to post.user.username, user_profile_path(post.user) %>
-          <%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %></small></p>
-        <p><small><%= "#{pluralize(post.likes.count, "like")}" %></small></p>
+          <%= "#{distance_of_time_in_words(post.created_at, Time.now)} ago" %>
+        </small></p>
+        <p><small>
+          <%= "#{pluralize(post.comments.count, "comment")}" %>
+        </small></p>
       </div>
     </div>
   <% end %>
