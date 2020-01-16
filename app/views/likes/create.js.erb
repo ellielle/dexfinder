@@ -1,7 +1,7 @@
 if ( $(".like-icon").hasClass("liked")) {
     $(".like-icon").css("fill", "black").removeClass("liked").addClass("not-liked")
-    $("#like-count").html("<%= "#{pluralize(@post.likes.count, "like")}" %>")
+    $("#like-count").html("<%= @post.likes.count %>")
 } else {
     $(".like-icon").css("fill", "orangered").removeClass("not-liked").addClass("liked")
-    $("#like-count").html("<%= "#{pluralize(@post.likes.count, "like")}" %>")
+    $("#like-count").html("<%= @post.likes.count %>")
 }

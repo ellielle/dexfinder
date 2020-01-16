@@ -6,6 +6,7 @@ $navbar-links-hover-dark: #777;
 $navbar-background-color-dark: #36393e;
 $text-darker-grey: #586069;
 $text-light-grey: #959da5;
+$footer-border: #eaecef;
 
 /* Header */
 
@@ -80,12 +81,12 @@ header {
 
 .post-list .likes-count {
   padding-top: 18px;
-  max-width: 60px;
+  max-width: 80px;
 }
 
 #single-post-likes-count {
   padding-top: 15px;
-  max-width: 60px;
+  max-width: 80px;
 }
 
 #btn-like {
@@ -104,6 +105,35 @@ header {
 
 .post-body {
   padding-top: 50px;
+}
+
+/* Comments */
+
+#comment-field, #btn-comment-field {
+  width: 50%;
+}
+
+#comment-field {
+  height: 10em;
+  resize: none;
+}
+
+#btn-comment-submit {
+  float: left;
+}
+
+.comment-list {
+  margin-top: 50px;
+  padding-left: 15px;
+}
+
+.comment-body {
+  min-width: 100%;
+}
+
+.separator {
+  margin-top: 50px;
+  border-top: 1px solid #87919a;
 }
 
 /* Friend List */
@@ -169,8 +199,9 @@ footer {
 .footer {
   // TODO change position if needed
   position: relative;
+  margin-top: 70px !important; // TODO fix this later
   bottom: 0;
-  border-top: 1px solid #eaecef;
+  border-top: 1px solid $footer-border;
   a {
     color: $text-light-grey;
     &:hover {

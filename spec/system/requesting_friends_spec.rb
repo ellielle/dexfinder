@@ -14,7 +14,7 @@ RSpec.describe "Requesting Friends" do
     login_as(user, scope: :user)
   end
 
-  describe "navigating to profile page and accepting invitation" do
+  xdescribe "navigating to profile page and accepting invitation" do
     it "should allow user to use profile page" do
       FactoryBot.create(:user, :user2)
       FactoryBot.create(:friend_request)
@@ -33,7 +33,7 @@ RSpec.describe "Requesting Friends" do
       #ensure none are left
     end
 
-    xit "should redirect user to root page if not signed in" do
+    it "should redirect user to root page if not signed in" do
       logout
       visit profile_url
       #expect(page.status_code).to eq(200)

@@ -1,11 +1,11 @@
 <div id="single-post-likes-count" class="col-1">
   <% if post.user == current_user %>
     <%= octicon "thumbsup", class: "like-icon #{is_liked}" %>
-    <small><%= post.likes.count %></small>
+    <small id="like-count"><%= post.likes.count %></small>
   <% else %>
     <%= button_to post_likes_path(post.slug), remote: true, id: "btn-like" do %>
       <%= octicon "thumbsup", class: "like-icon #{is_liked}" %>
-      <small><%= post.likes.count %></small>
+      <small id="like-count"><%= post.likes.count %></small>
     <% end %>
   <% end %>
 </div>

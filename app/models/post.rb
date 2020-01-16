@@ -12,17 +12,9 @@ class Post < ApplicationRecord
     slug
   end
 
-  def like_post
-
-  end
-
-  def unlike_post
-
-  end
-
   private
 
   def set_slug
-    self.update(slug: self.body.parameterize.truncate(48, omission: ''))
+    self.update(slug: self.title.parameterize.truncate(48, omission: ''))
   end
 end
