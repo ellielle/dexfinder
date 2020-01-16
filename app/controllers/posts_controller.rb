@@ -35,16 +35,19 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    Post.find_by(slug: params[:slug]).destroy
+    flash[:success] = "Post deleted."
+    redirect_to posts_url
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:body, :user_id)
+    params.require(:post).permit(:title, :body, :user_id)
   end
 
   def correct_user?
-    post_slug.user == current_user
+    redirect_back(fallback_location: posts_url) unless post_slug.user == current_user
   end
 
   def post_slug
