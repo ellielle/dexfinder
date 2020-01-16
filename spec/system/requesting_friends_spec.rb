@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'database_cleaner'
+require 'support/database_cleaner_capy'
 
 RSpec.configure do |config|
   config.after :each do
@@ -10,14 +10,17 @@ end
 RSpec.describe "Requesting Friends" do
   before do
     Capybara.current_driver = :rack_test
-    user = FactoryBot.create(:user)
-    login_as(user, scope: :user)
+    @current_user = FactoryBot.create(:user)
+    @other_user = FactoryBot.create(:user, username: Faker::Internet.user_name,
+                                    email: "test@testytest.com",
+                                    password: "boopsie")
+    login_as(@current_user, scope: :user)
   end
 
   xdescribe "navigating to profile page and accepting invitation" do
     it "should allow user to use profile page" do
-      FactoryBot.create(:user, :user2)
-      FactoryBot.create(:friend_request)
+      FactoryBot.create(:friend_request, from_user_id: @other_user.id,
+                        to_user_id: @current_user.id)
       visit profile_url
       #expect(page.status_code).to eq(200)
       expect(page).to have_current_path(profile_path)
@@ -29,7 +32,7 @@ RSpec.describe "Requesting Friends" do
         #click_button("Accept")
       #reset test / requests?
       #navigate back
-      #click decline button for each request
+      #click decline button for each requests
       #ensure none are left
     end
 

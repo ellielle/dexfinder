@@ -1,13 +1,13 @@
 <div>
   PLACEHOLDER FRIEND TEXT
   <ul class="friend-requests">
-    <% requests.each do |req| %>
+    <% requests.each do |request| %>
       <li class="friend-requests-list">
         <%= form_with url: friends_path, id: "friend-form" do |f| %>
-          <%= link_to "#{req.from_user.username}", "users/#{req.from_user.username}"  %>
+          <%= link_to "#{request.from_user.username}", "users/#{request.from_user.username}"  %>
           <%= f.submit "Accept", class: "accept" %>
           <%= f.submit "Decline", class: "decline" %>
-          <%= hidden_field_tag(:request_id, req.id) %>
+          <%= hidden_field_tag(:request_id, request.id) %>
         <% end %>
       </li>
     <% end %>
