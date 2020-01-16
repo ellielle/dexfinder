@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :user_signed_in?
+  before_action :user_signed_in_redirect
   before_action :find_commentable, only: [:create, :destroy]
 
   def new
