@@ -32,6 +32,14 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = post_slug
+    if @post.update(post_params)
+      flash[:success] = "Post updated."
+      redirect_to post_path(@post)
+    else
+      flash[:warning] = "You broke something. Fix it."
+      redirect_back(fallback_location: posts_url)
+    end
   end
 
   def destroy
