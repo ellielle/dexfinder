@@ -36,6 +36,18 @@ RSpec.describe "User tests" do
       post posts_path, params: { post: { title: "OI", body: "THIS IS A POST", user_id: @current_user.id }}
       expect(response).to have_http_status(302)
     end
+
+    it "doesn't allow invalid posts" do
+      expect(Post.all.count).to eq(0)
+      get new_post_path
+      expect(response).to have_http_status(200)
+      post posts_path, params: { post: { body: "THIS IS A POST", user_id: @current_user.id }}
+      expect(response.body).to include("1 error prohibited this post")
+      post posts_path, params: { post: { title: "OI", user_id: @current_user.id }}
+      expect(response.body).to include("2 errors prohibited this post")
+      post posts_path, params: { post: { user_id: @current_user.id }}
+      expect(response.body).to include("3 errors prohibited this post")
+    end
   end
 
   context "when showing posts" do
@@ -104,9 +116,25 @@ RSpec.describe "User tests" do
     end
   end
 
-  xcontext "when editing/updating a post" do
+  context "when editing/updating a post" do
     it "only allows the proper user to edit their post" do
-
+      FactoryBot.create(:post, user_id: @current_user.id)
+      expect(Post.all.count).to eq(1)
+      get edit_post_path(Post.first)
+      expect(response).to have_http_status(200)
+      expect(response.body).to include("test-page-testing")
+      patch post_path(Post.first), params: { post: { title: "bip bop",
+                                          body: "bibbity boop",
+                                          user_id: @current_user.id }}
+      expect(response).to have_http_status(302)
+      follow_redirect!
+      expect(response.body).to include("Post updated.").and include("bibbity boop")
+      sign_out(@current_user)
+      sign_in(@other_user)
+      get edit_post_path(Post.first)
+      expect(response).to have_http_status(302)
+      follow_redirect!
+      expect(response.body).to include("bip bop")
     end
   end
 end
