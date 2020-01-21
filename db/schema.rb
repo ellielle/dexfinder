@@ -52,7 +52,9 @@ ActiveRecord::Schema.define(version: 2020_01_21_035303) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "commentable_id"
     t.string "commentable_type"
+    t.bigint "user_id"
     t.index ["commentable_id"], name: "index_comments_on_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "friend_requests", force: :cascade do |t|
@@ -102,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_035303) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
 end

@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="comment-list">
+    <div class="comment-separator">
+      <p class="comment-body"><%= comment.body %></p>
+      <p><small>
+        Posted <%= "#{distance_of_time_in_words(comment.created_at, Time.now)} by " %>
+        <%= link_to comment.user.username, user_profile_path(comment.user.username) %>
+      </small></p>
+    </div>
+  </div>
+</div>

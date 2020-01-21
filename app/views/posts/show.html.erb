@@ -1,5 +1,5 @@
 <div class="row">
-  <%= render "likes_count_user_check", post: @post, is_liked: @is_liked %>
+  <%= render partial: "likes_count_user_check", locals: { post: @post, is_liked: @is_liked } %>
   <div class="post-title col-11">
     <%= @post.title %>
     <%= render "post_date_author", post: @post %>
@@ -16,7 +16,6 @@
     <%= form_with model: Comment.new do |f| %>
       <%= f.text_area :body, id: "comment-field" %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :post_id, value: @post.id %>
       <div id="btn-comment-field">
         <%= f.submit "Submit", class: "btn btn-primary", id: "btn-comment-submit" %>
       </div>
@@ -24,17 +23,7 @@
   </div>
 </div>
 <div class="separator"></div>
-<div class="row">
-  <div class="comment-list">
-    <% @post.comments.each do |comment| %>
-      <div class="comment-separator">
-        <p class="comment-body"><%= comment.body %></p>
-        <p><small>
-          Posted <%= "#{distance_of_time_in_words(comment.created_at, Time.now)} by " %>
-          <%= link_to comment.user.username, user_profile_path(comment.user.username) %>
-        </small></p>
-      </div>
-    <% end %>
-  </div>
-</div>
+<ul>
+  <%= render partial: "comments/comment_list", collection: @post.comments, as: :comment %>
+</ul>
 <%# TODO this page %>
