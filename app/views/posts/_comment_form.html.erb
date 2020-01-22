@@ -1,0 +1,8 @@
+<%= form_with model: Comment.new, local: true do |f| %>
+  <%= f.text_area :body, id: "comment-field", placeholder: "Add a reply..." %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :comment_id, value: comment.id %>
+  <div id="btn-comment-field">
+    <%= f.submit "Submit", class: "btn-primary", id: "btn-comment-submit" %>
+  </div><br/><br/>
+<% end %>

@@ -7,6 +7,7 @@ $navbar-background-color-dark: #36393e;
 $text-darker-grey: #586069;
 $text-light-grey: #959da5;
 $footer-border: #eaecef;
+$comment-time-color: gray;
 
 /* Header */
 
@@ -114,17 +115,13 @@ header {
 }
 
 #comment-field {
-  height: 10em;
+  height: 8em;
+  width: 25em;
   resize: none;
 }
 
 #btn-comment-submit {
   float: left;
-}
-
-.comment-list {
-  margin-top: 50px;
-  padding-left: 15px;
 }
 
 .comment-body {
@@ -134,6 +131,30 @@ header {
 .separator {
   margin-top: 50px;
   border-top: 1px solid #87919a;
+}
+
+.comment-list .comment-ul {
+  margin: 50px 0 0 -40px;
+  li {
+    list-style: none;
+  }
+}
+
+.comment-poster {
+  margin-bottom: 0;
+}
+
+.comment-poster-name {
+  padding: 0 10px 0 0 ;
+}
+
+.comment-post-time, .comment-buttons a {
+  color: $comment-time-color;
+}
+
+.comment-buttons {
+  margin-top: -15px;
+  word-spacing: 10px;
 }
 
 /* Friend List */

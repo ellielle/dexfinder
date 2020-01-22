@@ -9,4 +9,8 @@ module PagesHelper
       redirect_to root_url
     end
   end
+
+  def get_digest(string)
+    Digest::MD5.hexdigest(string).truncate(10, omission: '')
+  end
 end
