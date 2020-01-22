@@ -5,10 +5,15 @@
       <span class="comment-post-time"><%= "#{distance_of_time_in_words(comment.created_at, Time.now)} ago" %></span>
     </small></p>
     <p class="comment-body"><%= comment.body %></p>
-    <p class="comment-buttons"><small>
-      <%= link_to "reply", "##{get_digest(comment.body)}",  data: { toggle: :collapse },
-                  aria: { controls: get_digest(comment.body).to_sym, expanded: false } %>
-    </small></p>
+    <div class="comment-buttons row">
+      <%= button_to "reply", "#", remote: true, class: "btn-reply",
+                    data: { toggle: :collapse, target: "##{get_digest(comment.body)}" },
+                    aria: { controls: get_digest(comment.body).to_sym, expanded: false } %>
+      <% if comment.user == current_user %>
+        <%= button_to "delete", comment_path(comment), params: { comment: { comment_id: comment.id }},
+                      class: "btn-reply", method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </div>
   </div>
   <div class="collapse" id="<%= get_digest(comment.body) %>">
     <%= render partial: "posts/comment_form", locals: { comment: comment, get_comment: get_digest(comment.body) } %>

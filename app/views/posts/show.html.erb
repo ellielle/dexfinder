@@ -9,6 +9,8 @@
   <%= @post.body %>
 </div>
 
+<div class="separator"></div>
+
 <div class="post-comments row">
   <div class="col-md-12">
     <%= form_with model: Comment.new do |f| %>
@@ -21,7 +23,7 @@
     <% end %>
   </div>
 </div>
-<div class="separator"></div>
+
 <div class="comment-list">
   <ul class="comment-ul">
     <%= render partial: "comments/comment_list", collection: @post.comments, as: :comment %>

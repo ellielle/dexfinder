@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @commentable.destroy unless @commentable.nil?
+    redirect_back(fallback_location: posts_path)
   end
 
   private

@@ -90,7 +90,7 @@ header {
   max-width: 80px;
 }
 
-#btn-like {
+#btn-like, .btn-reply {
   border: none;
   background: none;
   outline: none;
@@ -155,6 +155,13 @@ header {
 .comment-buttons {
   margin-top: -15px;
   word-spacing: 10px;
+  margin-left: -7px !important;
+  margin-bottom: 10px;
+  font-size: small;
+}
+
+.btn-reply {
+  color: $comment-time-color;
 }
 
 /* Friend List */
