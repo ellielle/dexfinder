@@ -13,4 +13,13 @@ module PagesHelper
   def get_digest(string)
     Digest::MD5.hexdigest(string).truncate(10, omission: '')
   end
+
+  def get_forwarding_url
+    session[:forwarding_url] = request.original_url
+  end
+
+  def redirect_back_or(default_location)
+    redirect_to(session[:forwarding_url] || default_location)
+    session.delete(:forwarding_url)
+  end
 end

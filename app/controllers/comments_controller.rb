@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   def create
     if @commentable.comments.create(comment_params)
-      redirect_back(fallback_location: @commentable.nil? ? root_url : post_path(@commentable))
+      redirect_back_or(post_path(@commentable))
     else
       flash[:danger] = "Something went wrong, please set your computer on fire to solve the issue."
       redirect_to @commentable.nil? ? root_url : post_path(@commentable)
@@ -16,8 +16,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @commentable.destroy unless @commentable.nil?
-    redirect_back(fallback_location: posts_path)
+    if @commentable.user == current_user
+      @commentable.destroy unless @commentable.nil?
+      redirect_back(fallback_location: posts_path)
+    else
+      flash[:danger] = "You can't do that."
+      redirect_back(fallback_location: posts_path)
+    end
   end
 
   private

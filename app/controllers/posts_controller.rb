@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :user_signed_in_redirect
+  before_action :get_forwarding_url, only: [:show, :update]
   before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def new
@@ -38,7 +39,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash[:warning] = "You broke something. Fix it."
-      redirect_back(fallback_location: posts_url)
+      redirect_back_or(posts_url)
     end
   end
 
