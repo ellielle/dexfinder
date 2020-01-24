@@ -9,7 +9,7 @@
       <%= button_to "reply", "#", remote: true, class: "btn-reply",
                     data: { toggle: :collapse, target: "##{get_digest(comment.body)}" },
                     aria: { controls: get_digest(comment.body).to_sym, expanded: false } %>
-      <% if comment.user == current_user %>
+      <% if comment.user == current_user && comment.body != "[deleted]" %>
         <%= button_to "delete", comment_path(comment), params: { comment: { comment_id: comment.id }},
                       class: "btn-reply", method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
