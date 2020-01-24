@@ -13,7 +13,7 @@
       <div class="posted-by">
         <%= render "post_date_author", post: post %>
         <p><small>
-          <%= "#{pluralize(post.comments.count, "comment")}" %>
+          <%= "#{pluralize(post.comment_count, "comment")}" %>
         </small></p>
       </div>
     </div>
