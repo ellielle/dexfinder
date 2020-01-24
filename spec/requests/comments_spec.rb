@@ -73,19 +73,15 @@ RSpec.describe "Comment tests" do
       delete comment_path(Comment.first), params: { comment: { post_id: @post.id }}
       follow_redirect!
       expect(Comment.all.count).to eq(2)
+      expect(response.body).to_not include("[deleted]")
       # Correct User can delete comment
       sign_out(@other_user)
       sign_in(@current_user)
       # Deletes only the child comment
       delete comment_path(Comment.first), params: { comment: { comment_id: @post.comments.first.comments.first.id }}
-      expect(Comment.all.count).to eq(1)
-      # Deletes the full comment chain
-      post comments_path(@post), params: { comment: { body: "wow your comment is so good", user_id: @current_user.id,
-                                                      comment_id: @post.comments.first.id }}
       expect(Comment.all.count).to eq(2)
       get post_path(@post)
-      comment = Comment.find_by(body: "wow this is a great post")
-      expect { comment.destroy }.to change { Comment.count }.by(-2)
+      expect(response.body).to include("[deleted]")
     end
   end
 end
