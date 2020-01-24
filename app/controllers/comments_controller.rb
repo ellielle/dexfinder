@@ -45,7 +45,9 @@ class CommentsController < ApplicationController
       @commentable.update(comment_count:  @commentable.comment_count + 1)
     elsif request.request_method == "DELETE"
       post = Post.find_by(slug: request.referrer.rpartition(/\//)[2])
-      post.update(comment_count: post.comment_count - 1) unless post.comment_count <= 0
+      unless post.nil?
+        post.update(comment_count: post.comment_count - 1) unless post.comment_count <= 0
+      end
     end
   end
 end
