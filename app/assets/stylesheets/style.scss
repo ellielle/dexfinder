@@ -58,6 +58,11 @@ header {
   height: auto;
   margin: -7px;
 }
+/* User Profile */
+
+#friend-list-aside, #profile-pokedex {
+  float: right
+}
 
 /* Posts */
 
@@ -106,6 +111,11 @@ header {
 
 .post-body {
   padding-top: 50px;
+}
+
+#posts-created ul {
+  padding-left: 0;
+  list-style: none;
 }
 
 /* Comments */

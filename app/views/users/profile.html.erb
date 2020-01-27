@@ -1,11 +1,29 @@
-<div id="pending-incoming-requests">
-  <% unless @requests.nil? || @requests.none? %>
-    <%= render partial: 'pending_requests', locals: { requests: @requests } %>
-  <% end %>
-</div>
-<div id="current-friends-list">
-  <% unless @friends.nil? || @friends.none? %>
-    <%= render partial: 'friend_list', locals: { friends: @friends } %>
-  <% end %>
+LINK TO EDIT PROFILE SOMEWHERE AROUND HERE
+<div id="user-profile-picture">
+  <%= render partial: 'shared/user_profile_picture', locals: { user: current_user } %>
+  <aside id="profile-pokedex">
+    <div>
+      POKEDEX GOES HERE
+    </div>
+  </aside>
 </div>
 
+<aside id="friend-list-aside">
+  <div id="pending-incoming-requests">
+    <% unless @requests.nil? || @requests.none? %>
+      <%= render partial: 'pending_requests', locals: { requests: @requests } %>
+    <% end %>
+  </div>
+
+  <div id="current-friends-list">
+    <% unless @friends.nil? || @friends.none? %>
+      <%= render partial: 'friend_list', locals: { friends: @friends } %>
+    <% end %>
+  </div>
+</aside>
+
+<div id="posts-created">
+  <% unless current_user.posts.empty? %>
+    <%= render partial: 'users/user_posts' %>
+  <% end %>
+</div>

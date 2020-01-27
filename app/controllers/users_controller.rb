@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
+    @user = current_user.id
   end
 
   def update
@@ -18,20 +18,24 @@ class UsersController < ApplicationController
   end
 
   def friends
-    @requests = get_friend_requests if user_has_request?
-    @friends = get_friend_list
-    friend_request_action if params[:request_id]
-    respond_to do |format|
-      format.js
+    if params[:request_id]
+      friend_request_action
+      redirect_back(fallback_location: self_profile_path)
     end
   end
 
   def profile
     @requests = get_friend_requests if user_has_request?
     @friends = get_friend_list
+    # TODO get user avatar if exists
+    #@avatar
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:email)
+  end
 
   def friend_request_action
     if params[:request_id] && params[:commit] == "Accept"
