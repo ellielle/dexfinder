@@ -1,11 +1,11 @@
 <div id="pending-incoming-requests">
-  <% unless @requests.nil? || @requests.empty? %>
-    <%= render 'pending_requests', requests: @requests %>
+  <% unless @requests.nil? || @requests.none? %>
+    <%= render partial: 'pending_requests', locals: { requests: @requests } %>
   <% end %>
 </div>
 <div id="current-friends-list">
-  <% unless @friends.nil? || @friends.empty? %>
-    <%= render 'friend_list', friends: @friends %>
+  <% unless @friends.nil? || @friends.none? %>
+    <%= render partial: 'friend_list', locals: { friends: @friends } %>
   <% end %>
 </div>
 

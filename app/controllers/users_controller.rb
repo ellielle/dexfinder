@@ -10,8 +10,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @requests = get_friend_requests if user_has_request?
-    @friends = get_friend_list
+    @user = User.find_by(id: params[:id])
   end
 
   def update
