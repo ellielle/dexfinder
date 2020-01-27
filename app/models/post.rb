@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :likes, dependent: :delete_all
-  has_many :comments, dependent: :delete_all, as: :commentable
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy, as: :commentable
   after_create :set_slug
   validates :title, presence: true, length: { maximum: 255 }
   validates :body, presence: true, length: { minimum: 10, maximum: 1500 }

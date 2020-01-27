@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
-  has_many :comments, dependent: :delete_all, as: :commentable
+  has_many :comments, dependent: :destroy, as: :commentable
   validates :body, presence: true, length: { maximum: 1000 }
   validates :user_id, presence: true
 
