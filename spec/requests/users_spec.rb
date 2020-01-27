@@ -15,7 +15,7 @@ RSpec.describe "User tests" do
     it "adds the other user as a friend when accepted" do
       expect(@current_user.friend_requests.empty?).to be_falsey
       expect(@friend_request.status).to eq("none")
-      get profile_path
+      get self_profile_path
       expect(response).to have_http_status(200)
       post friends_path, xhr: true, params: { commit: "Accept", request_id: @friend_request.id}
       expect(response).to have_http_status(200)
@@ -25,7 +25,7 @@ RSpec.describe "User tests" do
     it "declines the invitation when declined" do
       expect(@current_user.friend_requests.empty?).to be_falsey
       expect(@friend_request.status).to eq("none")
-      get profile_path
+      get self_profile_path
       expect(response).to have_http_status(200)
       post friends_path, xhr: true, params: { commit: "Decline", request_id: @friend_request.id}
       expect(response).to have_http_status(200)

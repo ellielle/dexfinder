@@ -27,6 +27,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    @requests = get_friend_requests if user_has_request?
+    @friends = get_friend_list
+  end
+
   private
 
   def friend_request_action

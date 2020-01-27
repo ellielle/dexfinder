@@ -6,7 +6,7 @@ RSpec.describe "Pages tests" do
     it "should redirect if not logged in when navigating away from index" do
       get root_url
       expect(response).to have_http_status(200)
-      get profile_path
+      get self_profile_path
       expect(response).to have_http_status(302)
       get posts_path
       expect(response).to have_http_status(302)
@@ -20,7 +20,7 @@ RSpec.describe "Pages tests" do
       sign_in(FactoryBot.create(:user))
       get root_url
       expect(response).to have_http_status(200)
-      get profile_path
+      get self_profile_path
       expect(response).to have_http_status(200)
       get posts_path
       expect(response).to have_http_status(200)

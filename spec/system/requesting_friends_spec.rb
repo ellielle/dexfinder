@@ -21,14 +21,14 @@ RSpec.describe "Requesting Friends" do
     it "should allow user to use profile page" do
       FactoryBot.create(:friend_request, from_user_id: @other_user.id,
                         to_user_id: @current_user.id)
-      visit profile_url
+      visit self_profile_path
       #expect(page.status_code).to eq(200)
-      expect(page).to have_current_path(profile_path)
+      expect(page).to have_current_path(self_profile_path)
       expect(page).to have_css("#pending-incoming-requests")
         #click_button("Accept")
       #ensure none are left
       # TODO rewrite test after implement fix for jquery not removing the div
-      #visit profile_path
+      #visit self_profile_path
         #click_button("Accept")
       #reset test / requests?
       #navigate back
@@ -38,7 +38,7 @@ RSpec.describe "Requesting Friends" do
 
     it "should redirect user to root page if not signed in" do
       logout
-      visit profile_url
+      visit self_profile_path
       #expect(page.status_code).to eq(200)
       expect(page).to have_current_path(root_path)
       expect(page).to_not have_css("#pending-incoming-requests")

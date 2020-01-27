@@ -8,7 +8,7 @@
         <% if user_signed_in? %>
           <%# TODO signed-in stuff here, change link to profile to possible popup to confirm or reject request %>
           <li class="nav-item">
-            <%= link_to profile_path do %>
+            <%= link_to self_profile_path do %>
               <% if user_has_request? %>
                 <%= octicon "mail", class: "mail-icon", style: "fill: orangered;" %>
               <% else %>
@@ -21,7 +21,7 @@
               <%= current_user.username %><span class="caret"></span>
             </a>
             <div class="dropdown-menu">
-              <%= link_to "Profile", profile_url, class: "dropdown-item" %>
+              <%= link_to "Profile", self_profile_path, class: "dropdown-item" %>
               <%= link_to "Friends", "#", class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
               <%= link_to "Sign out", sign_out_path, class: "dropdown-item" %>
