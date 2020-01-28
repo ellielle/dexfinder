@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_signed_in_redirect
+  after_confirmation :set_
 
   def index
 
