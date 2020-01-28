@@ -22,4 +22,12 @@ module PagesHelper
     redirect_to(session[:forwarding_url] || default_location)
     session.delete(:forwarding_url)
   end
+
+  def user_has_avatar?(user)
+    if user.avatar.attached?
+      user.avatar
+    else
+      "empty_avatar.png"
+    end
+  end
 end

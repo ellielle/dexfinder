@@ -10,8 +10,8 @@ $footer-border: #eaecef;
 $comment-time-color: gray;
 
 /* Header */
-
 // Move page content below navbar
+
 header {
   margin-bottom: 12.1vh;
 }
@@ -72,6 +72,10 @@ nav .container-fluid {
 
 #friend-list-aside, #profile-pokedex {
   float: right
+}
+
+.user-avatar {
+  border-radius: 50%;
 }
 
 /* Posts */
