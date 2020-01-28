@@ -2,8 +2,8 @@
 <html lang="en">
   <%= render 'layouts/head' %>
   <body>
-    <div class="container">
-      <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
+    <div class="body-container">
       <% flash.each do |type, message| %>
         <%= content_tag :div, message, class: "alert alert-#{type}" %>
       <% end %>
