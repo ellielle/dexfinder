@@ -53,19 +53,22 @@ header {
 }
 
 .navbar-brand {
-  width: 10vw;
+  width: 152.4px;
   height: auto;
   margin: -7px 0;
 }
 
 nav .container-fluid {
-  margin: 0 2.4vw;
+  margin: 0;
+  padding: 0;
+  max-height: 40.5px;
 }
 
 /* Body */
 
 .body-container {
-  margin: 0 5vw;
+  margin: 0 auto;
+  max-width: 1280px;
 }
 
 /* User Profile */
