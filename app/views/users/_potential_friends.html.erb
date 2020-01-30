@@ -1,0 +1,10 @@
+NON FRIENDS HERE
+<ul class="not-friends-list">
+  <% not_friends.each do |friend| %>
+    <%= form_with url: friend_request_path, id: "non-friend-form" do |f| %>
+      <%= link_to "#{friend.username}", "users/#{friend.username}" %>
+      <%= f.submit "Request", class: "request " %>
+      <%= hidden_field_tag(:request_friend_id, friend.id) %>
+    <% end %>
+  <% end %>
+</ul>

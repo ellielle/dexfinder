@@ -199,7 +199,7 @@ nav .container-fluid {
 
 /* Friend List */
 
-.friend-requests, .friends-list {
+.friend-requests, .friends-list, .not-friends-list {
   padding-left: 0;
   li {
     list-style: none;
@@ -210,6 +210,11 @@ nav .container-fluid {
   padding: 1vh 0 1.5vh 0;
 }
 
+.accept, .decline, .request {
+  color: #fff;
+  border-radius: 5px;
+}
+
 .accept {
   background-color: #00a200;
   border-color: #188801;
@@ -218,11 +223,6 @@ nav .container-fluid {
 .decline {
   background-color: #ea0300;
   border-color: #c40400;
-}
-
-.accept, .decline {
-  color: #fff;
-  border-radius: 5px;
 }
 
 /* Format Devise's flash messages to appear like Bootstrap's */
@@ -249,7 +249,13 @@ nav .container-fluid {
 
 /* Footer */
 
-.footer {
+footer {
+  display: inline-block !important;
+  width: 100%;
+  height: auto;
+}
+
+#footer {
   // TODO change position if needed
   position: relative;
   margin-top: 11vh;

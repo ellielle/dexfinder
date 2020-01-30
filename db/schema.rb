@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_095416) do
+ActiveRecord::Schema.define(version: 2020_01_30_062544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_01_24_095416) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "none"
+    t.index ["from_user_id", "to_user_id"], name: "index_friend_requests_on_from_user_id_and_to_user_id", unique: true
     t.index ["from_user_id"], name: "index_friend_requests_on_from_user_id"
     t.index ["status"], name: "index_friend_requests_on_status"
     t.index ["to_user_id"], name: "index_friend_requests_on_to_user_id"

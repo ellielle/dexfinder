@@ -20,6 +20,10 @@ LINK TO EDIT PROFILE SOMEWHERE AROUND HERE
       <%= render partial: 'friend_list', locals: { friends: @friends } %>
     <% end %>
   </div>
+
+  <div id="potential-friend-list">
+    <%= render partial: 'users/potential_friends', locals: { not_friends: @not_friends } %>
+  </div>
 </aside>
 
 <div id="posts-created">
