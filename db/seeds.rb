@@ -1,10 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+@comment_count = 0
+
+def create_child_comments
+  Comment.all.each do |comment|
+    if comment.commentable_type == "Comment" && @comment_count <= 500
+      rand(1..3).times do
+        Comment.create(body: Faker::Books::Lovecraft.sentence, user_id: rand(1..7),
+                       commentable_type: "Comment", commentable_id: comment.id)
+        @comment_count += 1
+      end
+    elsif @comment_count > 500
+      break
+    end
+  end
+end
 
 # Create main User account for testing, along with 6 random Users
 User.create(username: "Buttstuff", email: "test@test.com", password: "testing")
@@ -37,8 +45,17 @@ Post.all.each do |post|
     Comment.create(body: Faker::Books::Lovecraft.sentence, user_id: rand(1..7),
                    commentable_type: "Post", commentable_id: post.id)
   end
-
 end
+
+Comment.all.each do |comment|
+  rand(1..2).times do
+    Comment.create(body: Faker::Books::Lovecraft.sentence, user_id: rand(1..7),
+                   commentable_type: "Comment", commentable_id: comment.id)
+    @comment_count += 1
+  end
+end
+
+create_child_comments
 
 # Create a random number of Likes for each Post within the constraints of number of Users
 Post.all.each do |post|
