@@ -1,19 +1,3 @@
-@comment_count = 0
-
-def create_child_comments
-  Comment.all.each do |comment|
-    if comment.commentable_type == "Comment" && @comment_count <= 500
-      rand(1..3).times do
-        Comment.create(body: Faker::Books::Lovecraft.sentence, user_id: rand(1..7),
-                       commentable_type: "Comment", commentable_id: comment.id)
-        @comment_count += 1
-      end
-    elsif @comment_count > 500
-      break
-    end
-  end
-end
-
 # Create main User account for testing, along with 6 random Users
 User.create(username: "Buttstuff", email: "test@test.com", password: "testing")
 6.times do |n|
@@ -40,6 +24,8 @@ end
 end
 
 # Create top level and child Comments for each Post
+@comment_count = 0
+
 Post.all.each do |post|
   5.times do
     Comment.create(body: Faker::Books::Lovecraft.sentence, user_id: rand(1..7),
@@ -55,7 +41,17 @@ Comment.all.each do |comment|
   end
 end
 
-create_child_comments
+Comment.all.each do |comment|
+  if comment.commentable_type == "Comment" && @comment_count <= 500
+    rand(1..3).times do
+      Comment.create(body: Faker::Books::Lovecraft.sentence, user_id: rand(1..7),
+                     commentable_type: "Comment", commentable_id: comment.id)
+      @comment_count += 1
+    end
+  elsif @comment_count > 500
+    break
+  end
+end
 
 # Create a random number of Likes for each Post within the constraints of number of Users
 Post.all.each do |post|
