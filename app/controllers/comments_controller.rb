@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   before_action :user_signed_in_redirect
   before_action :find_commentable, only: [:create, :destroy]
-  after_action :update_comment_count, only: [:create, :destroy]
+  after_action :increase_comment_count, only: :create
+  after_action :decrease_comment_count, only: :destroy
 
   def new
     @comment = Comment.new
@@ -33,31 +34,30 @@ class CommentsController < ApplicationController
   end
 
   def find_commentable
+    # Using @commentable_type to make it easier to find the post of child comments
     if params[:comment][:post_id]
       @commentable = Post.find(params[:comment][:post_id])
+      @commentable_type = "Post"
     elsif params[:comment][:comment_id]
       @commentable = Comment.find(params[:comment][:comment_id])
+      @commentable_type = "Comment"
     end
   end
 
-  def update_comment_count
-    return if request.referrer.nil?
-    if request.request_method == "POST"
-      if @commentable.is_a?(Post)
-        @commentable.update(comment_count:  @commentable.comment_count + 1)
-      elsif @commentable.is_a?(Comment)
-        post = get_commentable_post
-        post.update(comment_count: post.comment_count + 1)
-      end
-    elsif request.request_method == "DELETE"
-      post = get_commentable_post
-      unless post.nil?
-        post.update(comment_count: post.comment_count - 1) unless post.comment_count <= 0
-      end
-    end
+  def increase_comment_count
+    update_comment_count(1)
   end
 
-  def get_commentable_post
-    Post.find_by(slug: request.referrer.rpartition(/\//)[2])
+  def decrease_comment_count
+    update_comment_count(-1)
+  end
+
+  def update_comment_count(amount_changed)
+    if @commentable_type == "Post"
+      Post.update_counters(@commentable.id, comment_count: amount_changed)
+    elsif @commentable_type == "Comment"
+      find_post_id = Post.includes(:comments).where(comments: { body: @commentable.body }).map { |post| post.id }
+      Post.update_counters(find_post_id, comment_count: amount_changed)
+    end
   end
 end
