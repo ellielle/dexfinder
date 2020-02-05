@@ -63,8 +63,9 @@ ActiveRecord::Schema.define(version: 2020_01_30_062544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "none"
+    t.index "GREATEST(from_user_id, to_user_id), LEAST(from_user_id, to_user_id)", name: "index_friend_requests_on_interchangeable_from_user_id_and_to_us", unique: true
+    t.index "LEAST(from_user_id, to_user_id), GREATEST(from_user_id, to_user_id)", name: "index_friend_requests_on_interchangeable_to_user_id_and_from_us", unique: true
     t.index ["status"], name: "index_friend_requests_on_status"
-    t.index ["to_user_id", "from_user_id"], name: "index_friend_requests_on_to_user_id_and_from_user_id", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
