@@ -5,10 +5,14 @@ User.create(username: "Buttstuff", email: "test@test.com", password: "testing")
               password: "testing")
 end
 
-# Create a set of FriendRequests for each User, using count - 1 to avoid potential issues
+# Create a set of FriendRequests for main User, and a few for other Users
+7.times do |n|
+  User.first.outgoing_friend_requests.create(to_user_id: n) unless n == User.first.id
+end
+
 User.all.each do |user|
-  (User.count - 1).times do |n|
-    user.outgoing_friend_requests.create(to_user_id: n) unless n == user.id
+  if (user.id != User.first.id) && (user.id != 3)
+    user.outgoing_friend_requests.create(to_user_id: 3)
   end
 end
 

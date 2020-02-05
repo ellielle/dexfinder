@@ -63,10 +63,8 @@ ActiveRecord::Schema.define(version: 2020_01_30_062544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "none"
-    t.index ["from_user_id", "to_user_id"], name: "index_friend_requests_on_from_user_id_and_to_user_id", unique: true
-    t.index ["from_user_id"], name: "index_friend_requests_on_from_user_id"
     t.index ["status"], name: "index_friend_requests_on_status"
-    t.index ["to_user_id"], name: "index_friend_requests_on_to_user_id"
+    t.index ["to_user_id", "from_user_id"], name: "index_friend_requests_on_to_user_id_and_from_user_id", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
@@ -74,7 +72,6 @@ ActiveRecord::Schema.define(version: 2020_01_30_062544) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", unique: true
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
