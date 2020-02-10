@@ -1,15 +1,16 @@
 # Create main User account for testing, along with 6 random Users
 User.create(username: "Buttstuff", email: "test@test.com", password: "testing")
-6.times do |n|
+12.times do |n|
   User.create(username: Faker::Internet.username, email: "test#{n}@test.com",
               password: "testing")
 end
 
-# Create a set of FriendRequests for main User, and a few for other Users
+# Create a set of FriendRequests for main User, and a few for other Users for testing
 7.times do |n|
   User.first.outgoing_friend_requests.create(to_user_id: n) unless n == User.first.id
 end
 
+# Have every user send User 3 a FriendRequest, except the first
 User.all.each do |user|
   if (user.id != User.first.id) && (user.id != 3)
     user.outgoing_friend_requests.create(to_user_id: 3)
