@@ -1,12 +1,5 @@
 module PagesHelper
   def user_has_request?
-    # TODO
-    # TODO
-    # TODO
-    # TODO fix the friend_request relationship changes, THROW IT ALL IN THE FIRE AND START OVER
-    # FIXME : this is causing most of the test failures. START HERE
-    #  might require completely rework of logic
-    # FIXME | work done yesterday
     current_user.incoming_friend_requests.where(status: "none").any?
   end
 
