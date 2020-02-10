@@ -2,7 +2,11 @@ FRIEND LIST HERE
 <ul class="friends-list">
   <% friends.each do |friend| %>
     <li class="friend">
-      <%= link_to "#{friend.from_user.username}", "users/#{friend.from_user.username}" %>
+      <% if friend.from_user == current_user %>
+        <%= link_to "#{friend.to_user.username}", "users/#{friend.to_user.username}" %>
+      <% else %>
+        <%= link_to "#{friend.from_user.username}", "users/#{friend.from_user.username}" %>
+      <% end %>
     </li>
   <% end %>
 </ul>

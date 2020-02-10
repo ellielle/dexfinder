@@ -5,8 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :friend_requests, foreign_key: :from_user_id, dependent: :destroy
-  has_many :friend_requests, foreign_key: :to_user_id
+  has_many :outgoing_friend_requests, class_name: "FriendRequest", foreign_key: :from_user_id, dependent: :destroy
+  has_many :incoming_friend_requests, class_name: "FriendRequest", foreign_key: :to_user_id
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy, as: :commentable

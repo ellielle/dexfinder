@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :user_signed_in_redirect
 
   def index
-
   end
 
   def show
@@ -18,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def friends
+    # :request_id refers to the FriendRequest ID
     if params[:request_id]
       friend_request_action
       redirect_back(fallback_location: self_profile_path)
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def friend_request
+    # :request_friend_id refers to the receiving User's ID
     send_friend_request(params[:request_friend_id]) if params[:request_friend_id]
     redirect_back(fallback_location: self_profile_path)
   end
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
   def profile
     @requests = get_friend_requests if user_has_request?
     @friends = get_friend_list
-    @not_friends = get_not_friends
+    @potential_friends = get_potential_friend_list
   end
 
   private
@@ -50,32 +51,25 @@ class UsersController < ApplicationController
   end
 
   def get_friend_list
-    current_user.friend_requests.where(status: "accepted").all
+    FriendRequest.joins(:to_user, :from_user)
+        .where("to_user_id = ? OR from_user_id = ?", current_user.id, current_user.id)
+        .filter{ |request| request.status == "accepted" }
   end
 
   def get_friend_requests
-    current_user.friend_requests.where(status: "none").where.not(from_user_id: current_user.id).all
+    current_user.incoming_friend_requests.where(status: "none")
   end
 
-  def get_not_friends
+  def get_potential_friend_list
     # Get Users current_user has requests with, then compare against rest of Users
-    list = [current_user.id]
-    current_user.friend_requests.each do |request|
-      if request.to_user_id != current_user.id
-        list << request.to_user_id unless list.include?(request.to_user_id)
-      elsif request.from_user_id != current_user.id
-        list << request.from_user_id unless list.include?(request.from_user_id)
-      end
-    end
-    get_not_friends_list(list)
+    user_ids = User.ids.reject{ |reject_id| reject_id == current_user.id }
+        .difference(current_user.outgoing_friend_requests.map { |friend| friend.to_user_id })
+        .difference(current_user.incoming_friend_requests.map { |friend| friend.from_user_id })
+    User.where(id: user_ids)
   end
 
-  def get_not_friends_list(list)
-    User.where.not(id: list)
-  end
-
-  def process_request(answer)
-    answer ? FriendRequest.update(params[:request_id], status: "accepted") :
+  def process_request(accept)
+    accept ? FriendRequest.update(params[:request_id], status: "accepted") :
         FriendRequest.update(params[:request_id], status: "declined")
   end
 
@@ -86,9 +80,21 @@ class UsersController < ApplicationController
     current_user.avatar.attach(params[:avatar])
     # TODO use user.avatar.purge to delete previous image before storing a different one
     # TODO ^ but check to make sure one is attached first
+    # FIXME ensure this even fucking works at this point
   end
 
-  def send_friend_request(id)
-    FriendRequest.create(to_user_id: id, from_user_id: current_user.id)
+  def send_friend_request(user_id)
+    friend_request = current_user.outgoing_friend_requests.build(to_user_id: user_id)
+    begin
+      if friend_request.save
+        flash[:success] = "Friend request sent."
+      else
+        flash[:danger] = "You can't send multiple requests to the same person."
+      end
+    rescue ActiveRecord::RecordNotUnique
+      # Using a 'non-Railsy' way to enforce unique constraints without throwing an error. Doing it at the model level
+      # doesn't seem to prevent RecordNotUnique errors, and I couldn't find much on interchangeable unique fields.
+      flash[:danger] = "Friend request already exists."
+    end
   end
 end
