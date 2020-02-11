@@ -12,4 +12,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, as: :commentable
   has_one_attached :avatar
   validates :username, presence: true, length: { maximum: 30 }
+
+  def member_since
+    self.created_at.strftime("%b. %Y")
+  end
 end

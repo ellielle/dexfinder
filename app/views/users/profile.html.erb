@@ -7,6 +7,8 @@ LINK TO EDIT PROFILE SOMEWHERE AROUND HERE
     <div id="user-profile-info">
       <p class="profile"><%= current_user.username %></p>
       <p class="profile"><%= "Posts: #{current_user.posts.count}" %></p>
+      <p class="profile"><%= "Member since: #{current_user.member_since}" %></p>
+      <p class="profile-small"><%= link_to "edit", self_edit_path %></p>
     </div>
   </div>
   <div class="col-md-4">

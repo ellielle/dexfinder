@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'users/:username', to: "users#show", as: :user_profile
   get 'profile', to: "users#profile", as: :self_profile
+  get 'edit', to: "users#edit", as: :self_edit
   post 'friends', to: "users#friends"
   post 'friend_request', to: "users#friend_request"
   resources :posts, param: :slug do

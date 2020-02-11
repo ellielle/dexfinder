@@ -189,6 +189,16 @@ nav .container-fluid {
 
 /* User Profile */
 
+#user-profile-info {
+  margin-top: 10px;
+  .profile {
+    margin: auto 0 -4px 0;
+  }
+  .profile-small {
+    font-size: small;
+  }
+}
+
 #friend-list-aside, #profile-pokedex-aside {
   float: right
 }
