@@ -13,7 +13,7 @@ $comment-time-color: gray;
 // Move page content below navbar
 
 header {
-  margin-bottom: 12.1vh;
+  margin-bottom: 100px;
 }
 
 /* Navbar */
@@ -69,16 +69,6 @@ nav .container-fluid {
 .body-container {
   margin: 0 auto;
   max-width: 1280px;
-}
-
-/* User Profile */
-
-#friend-list-aside, #profile-pokedex {
-  float: right
-}
-
-.user-avatar {
-  border-radius: 50%;
 }
 
 /* Posts */
@@ -197,13 +187,26 @@ nav .container-fluid {
   color: $comment-time-color;
 }
 
-/* Friend List */
+/* User Profile */
+
+#friend-list-aside, #profile-pokedex-aside {
+  float: right
+}
+
+#friend-list-aside, #posts-created {
+  margin-top: 75px;
+}
+
+.user-avatar {
+  border-radius: 50%;
+}
 
 .friend-requests, .friends-list, .potential-friends-list {
   padding-left: 0;
   li {
     list-style: none;
   }
+
 }
 
 .friend-requests-list, .friend {
@@ -213,6 +216,9 @@ nav .container-fluid {
 .accept, .decline, .request {
   color: #fff;
   border-radius: 5px;
+  min-width: 70px !important;
+  max-width: 70px !important;
+  padding: 0;
 }
 
 .accept {
@@ -223,6 +229,27 @@ nav .container-fluid {
 .decline {
   background-color: #ea0300;
   border-color: #c40400;
+}
+
+.potential-friends-list {
+  li {
+    margin: 5px 0;
+  }
+  .request.col {
+    color: black; // FIXME change colors
+    padding: 0;
+  }
+}
+
+#friend-list-aside {
+  width: auto;
+  ul li {
+    list-style: none;
+    text-align: left;
+    .col {
+      padding-left: 0;
+    }
+  }
 }
 
 /* Format Devise's flash messages to appear like Bootstrap's */
@@ -257,8 +284,8 @@ footer {
 
 #footer {
   // TODO change position if needed
-  position: relative;
-  margin-top: 11vh;
+  position: static;
+  margin-top: 110px;
   bottom: 0;
   border-top: 1px solid $footer-border;
   a {

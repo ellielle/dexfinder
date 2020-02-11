@@ -2,8 +2,10 @@ NON FRIENDS HERE
 <ul class="potential-friends-list">
   <% potential_friends.each do |friend| %>
     <%= form_with url: friend_request_path, id: "potential-friends-form" do |f| %>
-      <%= link_to "#{friend.username}", "users/#{friend.username}" %>
-      <%= f.submit "Request", class: "request " %>
+      <li class="row">
+        <%= link_to "#{friend.username.truncate(25)}", "users/#{friend.username}", class: "col" %>
+        <%= f.submit "Send", class: "request col" %>
+      </li>
       <%= hidden_field_tag(:request_friend_id, friend.id) %>
     <% end %>
   <% end %>
