@@ -2,8 +2,6 @@ require 'rails_helper'
 require 'support/database_cleaner'
 require 'support/test_helpers'
 
-# FIXME this whole shit is broken
-
 RSpec.describe "User tests" do
   before do
     @current_user = FactoryBot.create(:user)

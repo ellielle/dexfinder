@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   post 'boop', to: "pages#remove_me"
   # TODO delete
 
-  get 'users/:username', to: "users#show", as: :user_profile
+  get 'users/:username', to: "users#show", as: :user_profile, constraints: { username: /[0-z\.]+/ }
   get 'profile', to: "users#profile", as: :self_profile
   get 'edit', to: "users#edit", as: :self_edit
   post 'friends', to: "users#friends"
   post 'friend_request', to: "users#friend_request"
+  post 'upload', to: "users#upload"
+  resources :users, only: :update
   resources :posts, param: :slug do
     resources :likes, only: [:create, :show, :destroy]
     resources :comments, only: [:new, :create, :destroy]
@@ -26,4 +28,5 @@ Rails.application.routes.draw do
     get 'sign_up', to: "users/registrations#new"
     get 'sign_out', to: "devise/sessions#destroy"
   end
+  get '*path' => redirect('/')
 end

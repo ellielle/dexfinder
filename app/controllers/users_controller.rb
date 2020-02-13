@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    if params[:username]
+      @user = User.find_by(username: params[:username])
+    elsif params[:id]
+      @user = User.find_by(id: params[:id])
+    end
   end
 
   def edit
@@ -34,12 +38,17 @@ class UsersController < ApplicationController
     @requests = get_friend_requests if user_has_request?
     @friends = get_friend_list
     @potential_friends = get_potential_friend_list
+    @user = current_user
+  end
+
+  def upload
+    change_user_avatar
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :avatar)
   end
 
   def friend_request_action
@@ -78,9 +87,7 @@ class UsersController < ApplicationController
       current_user.avatar.purge
     end
     current_user.avatar.attach(params[:avatar])
-    # TODO use user.avatar.purge to delete previous image before storing a different one
-    # TODO ^ but check to make sure one is attached first
-    # FIXME ensure this even fucking works at this point
+    redirect_to user_profile_path, params: { username: current_user.username }
   end
 
   def send_friend_request(user_id)

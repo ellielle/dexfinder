@@ -1,23 +1,6 @@
 LINK TO EDIT PROFILE SOMEWHERE AROUND HERE
-<div class="row">
-  <div class="col-md-1">
-    <%= render partial: 'shared/user_profile_picture', locals: { user: current_user } %>
-  </div>
-  <div class="col-md-7">
-    <div id="user-profile-info">
-      <p class="profile"><%= current_user.username %></p>
-      <p class="profile"><%= "Posts: #{current_user.posts.count}" %></p>
-      <p class="profile"><%= "Member since: #{current_user.member_since}" %></p>
-      <p class="profile-small"><%= link_to "edit", self_edit_path %></p>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <aside id="profile-pokedex-aside">
-      <div>
-        POKEDEX GOES HERE
-      </div>
-    </aside>
-  </div>
+<div id="main-profile">
+  <%= render partial: 'main_profile', locals: { user: current_user } %>
 </div>
 
 <aside id="friend-list-aside">
@@ -34,12 +17,12 @@ LINK TO EDIT PROFILE SOMEWHERE AROUND HERE
   </div>
 
   <div id="potential-friend-list">
-    <%= render partial: 'users/potential_friends', locals: { potential_friends: @potential_friends } %>
+    <%= render partial: 'potential_friends', locals: { potential_friends: @potential_friends } %>
   </div>
 </aside>
 
 <div id="posts-created">
   <% unless current_user.posts.empty? %>
-    <%= render partial: 'users/user_posts' %>
+    <%= render partial: 'user_posts' %>
   <% end %>
 </div>

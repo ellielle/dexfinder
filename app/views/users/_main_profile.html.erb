@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-1">
+    <%= render partial: 'shared/user_profile_picture', locals: { user: user } %>
+  </div>
+  <div class="col-md-7">
+    <div id="user-profile-info">
+      <p class="profile"><%= user.username %></p>
+      <p class="profile"><%= "Posts: #{user.posts.count}" %></p>
+      <p class="profile"><%= "Member since: #{user.member_since}" %></p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <aside id="profile-pokedex-aside">
+      <div>
+        POKEDEX GOES HERE
+      </div>
+    </aside>
+  </div>
+</div>
+<div class="profile-links">
+  <% if @user == user %>
+    <p class="profile-small"><%= link_to "edit profile", edit_user_registration_path %></p>
+    <p class="profile-small">
+      <%= link_to "change avatar", "#avatar-upload", role: :button,
+                  data: { toggle: :collapse },
+                  aria: { controls: "avatar-upload" }%>
+    </p>
+  <% end %>
+</div>
+<div class="collapse" id="avatar-upload">
+  <%= form_with url: { action: :upload } do |f| %>
+    <%= f.file_field :avatar %>
+    <%= f.submit "Change" %>
+  <% end %>
+</div>
