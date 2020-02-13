@@ -87,7 +87,7 @@ class UsersController < ApplicationController
       current_user.avatar.purge
     end
     current_user.avatar.attach(params[:avatar])
-    redirect_to user_profile_path, params: { username: current_user.username }
+    redirect_to self_profile_path
   end
 
   def send_friend_request(user_id)
