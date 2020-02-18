@@ -28,5 +28,4 @@ Rails.application.routes.draw do
     get 'sign_up', to: "users/registrations#new"
     get 'sign_out', to: "devise/sessions#destroy"
   end
-  get '*path' => redirect('/')
 end
