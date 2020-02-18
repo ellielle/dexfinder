@@ -4,6 +4,7 @@
   <%= render 'users/shared/error_messages', resource: @post %>
   <%= f.label :title %>
   <%= f.text_field :title, autofocus: true, required: true, class: "form-control" %>
+  <%= f.label :body %>
   <%= f.text_area :body, required: true, class: "form-control" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Submit", class: "btn btn-primary" %>

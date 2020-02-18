@@ -10,6 +10,11 @@ end
   User.first.outgoing_friend_requests.create(to_user_id: n) unless n == User.first.id
 end
 
+# Create a few invites to main test User account
+3.times do |n|
+  User.find(n + 7).outgoing_friend_requests.create(to_user_id: 1)
+end
+
 # Have every user send User 3 a FriendRequest, except the first
 User.all.each do |user|
   if (user.id != User.first.id) && (user.id != 3)

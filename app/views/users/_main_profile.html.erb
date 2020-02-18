@@ -29,7 +29,7 @@
 </div>
 <div class="collapse" id="avatar-upload">
   <%= form_with url: { action: :upload } do |f| %>
-    <%= f.file_field :avatar %>
-    <%= f.submit "Change" %>
+    <%= f.file_field :avatar, accept: 'image/png,image/jpg,image/jpeg', class: "btn-avatar-upload" %>
+    <%= f.submit "Change", class: "btn-avatar-upload" %>
   <% end %>
 </div>

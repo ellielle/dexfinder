@@ -1,13 +1,13 @@
 PENDING FRIENDS HERE
 <ul class="friend-requests">
   <% requests.each do |request| %>
-    <li class="friend-requests-list">
-      <%= form_with url: friends_path, id: "friend-form" do |f| %>
-        <%= link_to "#{request.from_user.username}", "users/#{request.from_user.username}"  %>
-        <%= f.submit "Accept", class: "accept" %>
-        <%= f.submit "Decline", class: "decline" %>
-        <%= hidden_field_tag(:request_id, request.id) %>
-      <% end %>
-    </li>
+    <%= form_with url: friends_path, id: "friend-form" do |f| %>
+      <li class="friend-requests-list row">
+        <%= link_to "#{request.from_user.username}", "users/#{request.from_user.username}", class: "col"  %>
+        <%= f.submit "Accept", class: "accept col" %>
+        <%= f.submit "Decline", class: "decline col" %>
+      </li>
+      <%= hidden_field_tag(:request_id, request.id) %>
+    <% end %>
   <% end %>
 </ul>

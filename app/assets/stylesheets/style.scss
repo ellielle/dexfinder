@@ -213,16 +213,11 @@ nav .container-fluid {
   border-radius: 50%;
 }
 
-.friend-requests, .friends-list, .potential-friends-list {
+.friend-requests, .friends-list {
   padding-left: 0;
   li {
     list-style: none;
   }
-
-}
-
-.friend-requests-list, .friend {
-  padding: 1vh 0 1.5vh 0;
 }
 
 .accept, .decline, .request {
@@ -243,11 +238,12 @@ nav .container-fluid {
   border-color: #c40400;
 }
 
-.potential-friends-list {
+.potential-friends-list, #pending-incoming-requests {
+  padding-left: 0;
   li {
     margin: 5px 0;
   }
-  .request.col {
+  .request.col, .accept.col, .decline.col {
     color: black; // FIXME change colors
     padding: 0;
   }
