@@ -15,6 +15,7 @@ gem 'devise', '~> 4.7.1'
 gem 'octicons'
 gem 'octicons_helper'
 gem 'image_processing'
+gem 'active_storage_validations'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

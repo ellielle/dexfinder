@@ -83,11 +83,17 @@ class UsersController < ApplicationController
   end
 
   def change_user_avatar
-    if current_user.avatar.attached?
-      current_user.avatar.purge
+    if params[:avatar].nil?
+      flash[:warning] = "Attachment can't be empty"
+      redirect_to self_profile_path
+    else
+      if current_user.avatar.attach(params[:avatar])
+        redirect_to self_profile_path
+      else
+        flash[:danger] = "#{current_user.errors.full_messages[0].gsub(/[\"\[\]]/, '')}"
+        redirect_to self_profile_path
+      end
     end
-    current_user.avatar.attach(params[:avatar])
-    redirect_to self_profile_path
   end
 
   def send_friend_request(user_id)

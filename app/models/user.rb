@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, as: :commentable
   has_one_attached :avatar
   validates :username, presence: true, length: { maximum: 30 }
+  validates :avatar, content_type: ['image/jpg', 'image/png', 'image/jpeg'],
+            size: { less_than: 2.megabytes, message: 'is too large'}
 
   def member_since
     self.created_at.strftime("%b. %Y")
