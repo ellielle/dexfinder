@@ -18,7 +18,7 @@ Though still in a very early state, you can see a semi-functional live build
 - [ ] Looking up Pokemon
 - [ ] Creating and maintaining a Pokedex
 - [ ] Creating posts, with pictures / links, similar to Facebook's timeline
-- [ ] Commenting on posts
+- [x] Commenting on posts
 - [ ] Searchable user profiles
 - [ ] Interactive chat
 ## Installation

@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
   root 'pages#index'
-
-  # TODO delete
-  post 'boop', to: "pages#remove_me"
-  # TODO delete
-
   get 'users/:username', to: "users#show", as: :user_profile, constraints: { username: /[0-z\.]+/ }
   get 'profile', to: "users#profile", as: :self_profile
   get 'edit', to: "users#edit", as: :self_edit
