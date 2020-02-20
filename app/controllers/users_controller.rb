@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     @friends = get_friend_list
     @potential_friends = get_potential_friend_list
     @user = current_user
+    @pagy, @posts = pagy(current_user.posts, items: 10)
   end
 
   def upload
