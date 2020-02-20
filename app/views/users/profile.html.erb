@@ -16,14 +16,14 @@
   </div>
 
   <div id="potential-friend-list">
-    <%= render partial: 'potential_friends', locals: { potential_friends: @potential_friends } %>
+    <%= render partial: 'potential_friends', locals: { potential_friends: @potential_friends, pagy: @pagy_friends } %>
   </div>
 </aside>
 
 <div id="posts-created">
   <% unless current_user.posts.empty? %>
     <%= render partial: 'user_posts', locals: { posts: @posts } %>
-    <span id="pagy-small">
+    <span class="pagy-small">
       <%== pagy_bootstrap_nav(@pagy) %>
     </span>
   <% end %>
