@@ -8,12 +8,19 @@ $text-darker-grey: #586069;
 $text-light-grey: #959da5;
 $footer-border: #eaecef;
 $comment-time-color: gray;
+$poke-yellow: #ffe031;
 
 /* Header */
 // Move page content below navbar
 
 header {
   margin-bottom: 100px;
+}
+
+/* Misc */
+
+.no-script {
+  text-align: center;
 }
 
 /* Navbar */
@@ -64,6 +71,10 @@ nav .container {
   max-width: 1280px;
 }
 
+#friend-requests-count {
+  color: $poke-yellow;
+}
+
 /* Body */
 
 .body-container {
@@ -77,6 +88,10 @@ nav .container {
   margin-top: 20px;
   padding-left: 48.3px;
   font-size: small;
+}
+
+.not-member {
+  text-align: center;
 }
 
 /* Posts */
@@ -137,6 +152,20 @@ nav .container {
 #posts-created ul {
   padding-left: 0;
   list-style: none;
+}
+
+.new-post-form {
+  resize: none;
+  width: 35vw !important;
+  margin: 0 0 10px 0;
+}
+
+.new-post-label {
+  margin-bottom: 0;
+}
+
+#post_body {
+  height: 175px;
 }
 
 /* Comments */
@@ -312,7 +341,6 @@ footer {
 }
 
 #footer {
-  // TODO change position if needed
   position: static;
   margin-top: 110px;
   bottom: 0;
@@ -341,6 +369,10 @@ footer {
   &:hover {
     fill: $text-darker-grey;
   }
+}
+
+.footer-home {
+  font-size: medium;
 }
 
 /* Misc */

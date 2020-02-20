@@ -1,13 +1,15 @@
 <div class="index-main">
   <% if current_user.nil? %>
-    <%# TODO FILL ME IN %>
+    <div class="not-member">
+      <%= render 'pages/not_signed_in' %>
+    </div>
   <% else %>
     <div class="index-posts">
       <%= render 'posts/post_feed', posts: @posts %>
     </div>
+    <div class="see-more">
+      <p><%= link_to "See more...", posts_path %></p>
+    </div>
   <% end %>
 </div>
 
-<div class="see-more">
-  <p><%= link_to "See more...", posts_path %></p>
-</div>

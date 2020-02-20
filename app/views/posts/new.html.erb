@@ -1,11 +1,13 @@
 <%= provide(:title, "New Post") %>
-<h1>Posts#new</h1>
+<h4>Submit a new post</h4>
 <%= form_with model: @post, local: true do |f| %>
   <%= render 'users/shared/error_messages', resource: @post %>
-  <%= f.label :title %>
-  <%= f.text_field :title, autofocus: true, required: true, class: "form-control" %>
-  <%= f.label :body %>
-  <%= f.text_area :body, required: true, class: "form-control" %>
+  <%= f.label :title, class: "new-post-label" %>
+  <%= f.text_field :title, autofocus: true, required: true, class: "new-post-form form-control",
+                   placeholder: "Title" %>
+  <%= f.label :body, class: "new-post-label" %>
+  <%= f.text_area :body, required: true, class: "new-post-form form-control",
+                  placeholder: "New post..." %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

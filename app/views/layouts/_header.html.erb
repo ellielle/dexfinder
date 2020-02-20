@@ -5,9 +5,19 @@
         <%= image_tag("DeXFindeR_shadow.png", class: "navbar-brand") %>
       <% end %>
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'Posts', posts_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'New Post', new_post_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <%# TODO signed-in stuff here, change link to profile to possible popup to confirm or reject request %>
           <li class="nav-item">
+            <span id="friend-requests-count">
+              <%= current_user.incoming_friend_requests.count %>
+            </span>
             <%= link_to self_profile_path do %>
               <% if user_has_request? %>
                 <%= octicon "mail", class: "mail-icon", style: "fill: orangered;" %>
@@ -28,6 +38,9 @@
             </div>
           </li>
         <% else %>
+          <li class="nav-item nav-right-item">
+            <%= link_to "Become a member", sign_up_path, class: "nav-link" %>
+          </li>
           <li class="nav-item nav-right-item">
             <%= link_to "Sign in", sign_in_path, class: "nav-link" %>
           </li>
