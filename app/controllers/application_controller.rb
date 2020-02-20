@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include PagesHelper
   include LikesHelper
+  include Pagy::Backend
   #rescue_from ActionView::Template::Error, with: :i_am_bad # FIXME
 
   private

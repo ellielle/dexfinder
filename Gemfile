@@ -16,6 +16,7 @@ gem 'octicons'
 gem 'octicons_helper'
 gem 'image_processing'
 gem 'active_storage_validations'
+gem 'pagy'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

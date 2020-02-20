@@ -1,5 +1,8 @@
 <div>
-<%= render "post_feed", posts: @posts %>
+  <%= render "post_feed", posts: @posts %>
 </div>
 
+<div class="bootstrap-nav">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
 <%# TODO this page %>
