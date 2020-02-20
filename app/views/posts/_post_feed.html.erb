@@ -11,7 +11,7 @@
     <div class="post-content col-11">
       <p><%= link_to post.title, post_path(post) %></p>
       <div class="posted-by">
-        <%= render "post_date_author", post: post %>
+        <%= render 'posts/post_date_author', post: post %>
         <p><small>
           <%= "#{pluralize(post.comment_count, "comment")}" %>
         </small></p>

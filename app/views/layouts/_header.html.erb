@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
-    <div class="container-fluid">
+    <div class="container">
       <%= link_to root_path do %>
         <%= image_tag("DeXFindeR_shadow.png", class: "navbar-brand") %>
       <% end %>
@@ -22,7 +22,7 @@
             </a>
             <div class="dropdown-menu">
               <%= link_to "Profile", self_profile_path, class: "dropdown-item" %>
-              <%= link_to "Friends", "#", class: "dropdown-item" %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
               <%= link_to "Sign out", sign_out_path, class: "dropdown-item" %>
             </div>

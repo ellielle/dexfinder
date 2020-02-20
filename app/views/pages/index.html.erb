@@ -1,5 +1,13 @@
-<% if current_user.nil? %>
-  <%# TODO FILL ME IN %>
-<% else %>
-  <%= button_to("Posts Index", posts_path, method: :get) %>
-<% end %>
+<div class="index-main">
+  <% if current_user.nil? %>
+    <%# TODO FILL ME IN %>
+  <% else %>
+    <div class="index-posts">
+      <%= render 'posts/post_feed', posts: @posts %>
+    </div>
+  <% end %>
+</div>
+
+<div class="see-more">
+  <p><%= link_to "See more...", posts_path %></p>
+</div>

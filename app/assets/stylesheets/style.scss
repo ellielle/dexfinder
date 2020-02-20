@@ -58,10 +58,10 @@ header {
   margin: -7px 0;
 }
 
-nav .container-fluid {
-  margin: 0 30px; // FIXME remove dropdown?
+nav .container {
   padding: 0;
   max-height: 40.5px;
+  max-width: 1280px;
 }
 
 /* Body */
@@ -69,6 +69,13 @@ nav .container-fluid {
 .body-container {
   margin: 0 auto;
   max-width: 1280px;
+}
+
+/* Index */
+
+.see-more {
+  padding-left: 48.3px;
+  font-size: small;
 }
 
 /* Posts */

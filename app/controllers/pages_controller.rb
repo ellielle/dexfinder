@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.take(10)
   end
 end
