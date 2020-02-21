@@ -11,5 +11,5 @@
   <% end %>
 </ul>
 <div class="pagy-small">
-  <%== pagy_bootstrap_nav(pagy) %>
+  <%== pagy_bootstrap_nav(pagy) unless pagy.pages < 2 %>
 </div>

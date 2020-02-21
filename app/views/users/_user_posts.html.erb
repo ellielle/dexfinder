@@ -1,6 +1,10 @@
-<p><%= "#{current_user.username}'s posts:" %></p>
-<ul>
-  <% posts.each do |post| %>
-    <li><%= link_to post.title, post_path(post) %></li>
-  <% end %>
-</ul>
+<% if posts.empty? %>
+  <p><%= "#{user.username}" %> has no posts.</p>
+<% else %>
+  <p><%= "#{user.username}'s posts:" %></p>
+  <ul>
+    <% posts.each do |post| %>
+      <li><%= link_to post.title, post_path(post) %></li>
+    <% end %>
+  </ul>
+<% end %>

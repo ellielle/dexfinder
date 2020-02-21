@@ -8,6 +8,11 @@
 <div class="post-body">
   <%= @post.body %>
 </div>
+<div id="delete-post">
+  <% if @post.user == current_user %>
+    <%= link_to 'Delete', post_path(@post), method: :delete, id: "btn-delete-post" %>
+  <% end %>
+</div>
 
 <div class="separator"></div>
 
@@ -29,4 +34,3 @@
     <%= render partial: "comments/comment_list", collection: @post.comments, as: :comment %>
   </ul>
 </div>
-<%# TODO first text box doesn't open for some reason? %>

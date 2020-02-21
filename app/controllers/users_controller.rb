@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     elsif params[:id]
       @user = User.find_by(id: params[:id])
     end
+    @pagy, @posts = pagy(@user.posts) unless @user.nil?
   end
 
   def edit
@@ -32,6 +33,11 @@ class UsersController < ApplicationController
     # :request_friend_id refers to the receiving User's ID
     send_friend_request(params[:request_friend_id]) if params[:request_friend_id]
     redirect_back(fallback_location: self_profile_path)
+  end
+
+  def friend_delete
+    remove_friend if params[:delete_friend_id]
+    redirect_to self_profile_path
   end
 
   def profile
@@ -110,5 +116,9 @@ class UsersController < ApplicationController
       # doesn't seem to prevent RecordNotUnique errors, and I couldn't find much on interchangeable unique fields.
       flash[:danger] = "Friend request already exists."
     end
+  end
+
+  def remove_friend
+    FriendRequest.find(params[:delete_friend_id]).destroy
   end
 end

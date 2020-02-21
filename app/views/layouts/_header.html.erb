@@ -18,7 +18,7 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <span id="friend-requests-count">
-              <%= current_user.incoming_friend_requests.count %>
+              <%= friend_request_count %>
             </span>
             <%= link_to self_profile_path do %>
               <% if user_has_request? %>

@@ -1,12 +1,16 @@
 <p class="profile-right-p">Friends:</p>
 <ul class="friends-list">
   <% friends.each do |friend| %>
-    <li class="friend">
-      <% if friend.from_user == current_user %>
-        <%= link_to "#{friend.to_user.username}", "users/#{friend.to_user.username}" %>
-      <% else %>
-        <%= link_to "#{friend.from_user.username}", "users/#{friend.from_user.username}" %>
-      <% end %>
-    </li>
+    <%= form_with url: remove_friend_path do |f| %>
+      <li class="friend row">
+        <% if friend.from_user == current_user %>
+          <%= link_to "#{friend.to_user.username}", "users/#{friend.to_user.username}", class: "col" %>
+        <% else %>
+          <%= link_to "#{friend.from_user.username}", "users/#{friend.from_user.username}", class: "col" %>
+        <% end %>
+        <%= f.submit "Remove", class: "request col" %>
+      </li>
+      <%= hidden_field_tag(:delete_friend_id, friend.id) %>
+    <% end %>
   <% end %>
 </ul>

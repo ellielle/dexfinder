@@ -168,6 +168,11 @@ nav .container {
   height: 175px;
 }
 
+#delete-post {
+  margin: 20px 0 -45px 0;
+  font-size: small;
+}
+
 /* Comments */
 
 #comment-field, #btn-comment-field {
@@ -220,8 +225,12 @@ nav .container {
   font-size: small;
 }
 
-.btn-reply {
+.btn-reply, #btn-delete-post {
   color: $comment-time-color;
+}
+
+.users-are-friends {
+  color: orangered;
 }
 
 /* User Profile */
@@ -258,11 +267,9 @@ nav .container {
 }
 
 .accept, .decline, .request {
-  color: #fff;
   border-radius: 5px;
   min-width: 70px !important;
   max-width: 70px !important;
-  padding: 0;
 }
 
 .accept {
@@ -275,13 +282,17 @@ nav .container {
   border-color: #c40400;
 }
 
-.potential-friends-list, #pending-incoming-requests {
+.potential-friends-list, #pending-incoming-requests, #current-friends-list {
   padding-left: 0;
   li {
     margin: 5px 0;
   }
-  .request.col, .accept.col, .decline.col {
-    color: black; // FIXME change colors
+  .accept.col, .decline.col {
+    color: white;
+    padding: 0;
+  }
+  .request.col {
+    color: black;
     padding: 0;
   }
 }

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'friends', to: "users#friends"
   post 'friend_request', to: "users#friend_request"
   post 'upload', to: "users#upload"
+  post 'remove_friend', to: "users#friend_delete"
   resources :users, only: :update
   resources :posts, param: :slug do
     resources :likes, only: [:create, :show, :destroy]

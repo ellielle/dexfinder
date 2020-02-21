@@ -4,7 +4,7 @@
 
 <div id="posts-created">
   <% unless current_user.posts.empty? %>
-    <%= render partial: 'users/user_posts' %>
+    <%= render partial: 'users/user_posts', locals: { posts: @posts, user: @user } %>
   <% end %>
 </div>
 

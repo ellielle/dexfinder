@@ -22,9 +22,9 @@
 
 <div id="posts-created">
   <% unless current_user.posts.empty? %>
-    <%= render partial: 'user_posts', locals: { posts: @posts } %>
+    <%= render partial: 'user_posts', locals: { posts: @posts, user: @user } %>
     <span class="pagy-small">
-      <%== pagy_bootstrap_nav(@pagy) %>
+      <%== pagy_bootstrap_nav(@pagy) unless @pagy.pages < 2 %>
     </span>
   <% end %>
 </div>

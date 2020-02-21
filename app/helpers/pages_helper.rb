@@ -30,4 +30,8 @@ module PagesHelper
       "empty_avatar.png"
     end
   end
+
+  def friend_request_count
+    current_user.incoming_friend_requests.where(status: "none").count
+  end
 end
