@@ -46,6 +46,11 @@
           <li class="nav-item nav-right-item">
             <%= link_to "Sign in", sign_in_path, class: "nav-link" %>
           </li>
+          <li class="nav-item nav-right-item">
+            <%= link_to user_discord_omniauth_authorize_path do %>
+              <%= image_tag "discord-white.png", id: "discord-logo" %>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

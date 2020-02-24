@@ -5,9 +5,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+  def discord
+    @user = User.from_omniauth(request.env["omniauth.auth"])
 
+    if @user.persisted?
+      sign_in @user
+      redirect_to root_url
+    else
+      session["devise.discord_data"] = request.env["omniauth.auth"]
+      redirect_to new_user_registration_url
+    end
+  end
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
 
@@ -16,10 +24,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super
   # end
 
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def failure
+    redirect_to root_url
+  end
 
   # protected
 

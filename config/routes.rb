@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   end
   # Devise routes
   devise_for :users, path: "account", controllers: {
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
     get 'sign_in', to: "devise/sessions#new"
