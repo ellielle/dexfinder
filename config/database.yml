@@ -76,10 +76,11 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+#     url: 
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: dexfinder_production
-  username: dexfinder
+  username: <%= ENV['DEXFINDER_DATABASE_USERNAME'] %>
   password: <%= ENV['DEXFINDER_DATABASE_PASSWORD'] %>
