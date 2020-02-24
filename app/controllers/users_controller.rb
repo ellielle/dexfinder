@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def profile
     @requests = get_friend_requests if user_has_request?
     @friends = get_friend_list
-    @pagy_friends, @potential_friends = pagy(get_potential_friend_list, items: 5)
+    @potential_friends = get_potential_friend_list
     @user = current_user
     @pagy, @posts = pagy(current_user.posts, items: 10)
   end
