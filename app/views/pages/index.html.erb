@@ -8,7 +8,7 @@
       <%= render 'posts/post_feed', posts: @posts %>
     </div>
     <div class="see-more">
-      <% unless @posts.nil? %>
+      <% unless @posts.nil? || @posts.empty? %>
         <p><%= link_to "See more...", posts_path %></p>
       <% end %>
     </div>
