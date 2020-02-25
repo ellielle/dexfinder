@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  #url: postgres://lxicypklixfzve:1ad937cd9f14f5e9b849a60e059cdc89a5c1ac10e58b495a307495fef1fec011@ec2-174-129-254-231.compute-1.amazonaws.com:5432/d8pnbhsjt836tk
   database: dexfinder_production
-  username: dexfinder
+  username: <%= ENV['DEXFINDER_DATABASE_USERNAME'] %>
   password: <%= ENV['DEXFINDER_DATABASE_PASSWORD'] %>
